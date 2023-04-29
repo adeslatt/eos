@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-5-workflow-execution/authenticating-on-cavatica/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Authenticating on cavatica - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Authenticating on cavatica";
+        var mkdocs_page_input_path = "classes/day-5-workflow-execution/authenticating-on-cavatica.md";
+        var mkdocs_page_url = "/eos/classes/day-5-workflow-execution/authenticating-on-cavatica/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1-reasoning/day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2-code-versioning/day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-3-containerization/day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-4-workflow-development/day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Authenticating on cavatica</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-5-workflow-execution/authenticating-on-cavatica.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="authenticating-with-cavatica">Authenticating with CAVATICA</h2>
+<p>You can authenticate in two ways, you can use a <em><code>credential</code></em> file that the <em><code>CAVATICA</code></em> application recognizes or you can do command line login.</p>
+<p>Both methods use the <em><code>CAVATICA</code></em>'s developer's authentication token.</p>
+<p>If you navigate to <em><code>CAVATICA</code></em> to your <em><code>project</code></em>, for me it was the <em><code>elements-of-style</code></em> project.
+<img src="/../../img/CAVATICAElements-of-StyleDashboard.png"></p>
+<p>Then navigate to the <em><code>CAVATICA</code></em> Docker registry under the <em><code>Developer</code></em> tab.</p>
+<p><img src="/../../img/CAVATICADockerRegistry.png"></p>
+<p>Selecting the one of the containers of interest, <em><code>fastqc</code></em>, you can see more detail with the container:</p>
+<p><img src="/../../img/CAVATICAFastqcDockerDetail.png"></p>
+<p>Further, you can see, that <em><code>CAVATICA</code></em> has conveniently placed the necessary commands to facilitate <em><code>login</code></em>, <em><code>push</code></em> and <em><code>pull</code></em>.</p>
+<p><img src="/../../img/CAVATICAFastqcDockerCommands.png"></p>
+<h3 id="authenticate-with-command-line-login">Authenticate with command line login</h3>
+<p>Let's copy the <em><code>login</code></em> command and paste it in our <em><code>google shell window</code></em>.</p>
+<pre><code class="language-bash">docker login pgc-images.sbgenomics.com -u &lt;USERNAME&gt; -p &lt;YOUR-AUTH-TOKEN&gt;
+</code></pre>
+<p>Replace the <em><code>&lt;USERNAME&gt;</code></em> with your <em><code>username</code></em> and the <em><code>&lt;YOUR-AUTH-TOKEN&gt;</code></em> with your <em><code>authentication token</code></em>.</p>
+<h3 id="authenticate-with-a-cavatica-credential-file">Authenticate with a CAVATICA credential file.</h3>
+<p>Alternatively you create your credentials in a credential file.</p>
+<p>To do this at the <em><code>root</code></em> directory, you can type the command <em><code>push ~</code></em> to navigate to the root directory.</p>
+<p>A fun pair of commands for navigation in a shell are <em><code>pushd</code></em> and <em><code>popd</code></em>.  <a href="https://en.wikipedia.org/wiki/Pushd_and_popd">Wikipedia actually has a nice page to explain these two commands for faster navigation</a>.  Think of pushing your commands on a stack and popping them off to return where you are.</p>
+<p>Let's <em><code>pushd</code></em> to our root directory</p>
+<pre><code class="language-bash">pushd ~/
+</code></pre>
+<p>What we have done is stored in memory where we started from and our next destination.
+We can see this by asking what we have on this kind of <code>stack</code> of directories with another command:</p>
+<pre><code class="language-bash">dirs
+</code></pre>
+<p>What this shows is:</p>
+<pre><code class="language-bash">(eos) dirs
+~ ~/Building-A-CWL-Script
+</code></pre>
+<p>This returns our <code>Home</code> directory where we just navigated to and where we came from <code>~/adeslatt/Building-A-CWL-script</code>.
+Home or the root directory (Home is the name used for the top of the directory or root because the directory structure is like a tree.
+And Home looks like <code>~</code>.  </p>
+<p>Now make a directory for <em><code>CAVATICA</code></em> to find your credentials</p>
+<pre><code class="language-bash">mkdir .sevenbridges
+</code></pre>
+<p>You are creating a subdirectory that is a <em><code>hidden</code></em> directory by typing <em><code>mkdir .sevenbridges</code></em>, which you can now navigate to.</p>
+<pre><code class="language-bash">cd .sevenbridges
+</code></pre>
+<p>you can use <em><code>touch</code></em> to create your credentials file.</p>
+<pre><code class="language-bash">[cavatica]
+api_endpoint = https://cavatica-api.sbgenomics.com/v2
+auth_token = &lt;paste your AUTHENTICATION TOKEN here&gt;
+</code></pre>
+<p>Now to get back to where we started we type</p>
+<pre><code class="language-bash">popd
+</code></pre>
+<p><a href="../day-5-workflow-execution/">Return to Agenda</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

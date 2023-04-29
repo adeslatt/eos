@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-2-code-versioning/why-git-and-setup/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Why Git and GitHub? - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Why Git and GitHub?";
+        var mkdocs_page_input_path = "classes/day-2-code-versioning/why-git-and-setup.md";
+        var mkdocs_page_url = "/eos/classes/day-2-code-versioning/why-git-and-setup/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1-reasoning/day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-3-containerization/day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-4-workflow-development/day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-5-workflow-execution/day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Why Git and GitHub?</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-2-code-versioning/why-git-and-setup.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="why-git-and-github">Why Git and GitHub?</h1>
+<p>Motivation and set up in the JupyterLab workspace</p>
+<h2 id="why-git">Why Git?</h2>
+<p><img src="https://git-scm.com/images/logos/downloads/Git-Logo-1788C.png"  width="100"></p>
+<p>Git is a <a href="https://git-scm.com/">technology or a system used for version control</a> of code</p>
+<ul>
+<li>Frees up our code from our local machine (no risk of losing files from your laptop or your jupyterlab notebook on an ephemeral image!)</li>
+<li>Ensures that we are tracking the changes of our code as a project progresses</li>
+<li>Allows us to revisit older versions of our work (R codes, notebooks, even this markdown used to make this course - text files, etc).</li>
+<li>Allows us to keep different versions of our work</li>
+</ul>
+<h2 id="why-github">Why GitHub?</h2>
+<p><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGO2P0vFlvhsDbmltsjjIWZMi1dQCduIkuwA&usqp=CAU"  width="50"> </p>
+<p>Git <strong><em>Hub</em></strong> is a <a href="https://github.com/about"><em>"code hosting platform for version control and collaboration"</em></a></p>
+<ul>
+<li>Large community of open source project to browse</li>
+<li>Enables collaboration of many contributors in the same project</li>
+<li>Serves as a code vault for making our reasearch code findable and our methods transparent</li>
+</ul>
+<h2 id="setting-up-in-the-terminal">Setting up in the terminal</h2>
+<p>In the JupyterLab notebook we started on Cavatica, looking like this:</p>
+<p><img src="/../../img/JupyterLabNotebookSelectTerminalWindow.png" width=650></p>
+<p><em>Please</em> open the Terminal <img src="/../../img/CAVATICAJupyterLabTerminalWindowSelection.png" width=50> window.</p>
+<p>We are going back to the command line.  <img src="../../img/thumbsup.png" width=50> in <em>zoom</em> to know all is well.</p>
+<h2 id="using-the-nano-file-editor">Using the <code>nano</code> file editor</h2>
+<p>Before we start working with Git in the command line, we will learn one more helpful skill. How to use a code editor. A code editors allows us to edit files in an environment without a graphical user interface. For us, it will be needed in some Git related tasks, so we want to be prepared.</p>
+<p>Edit a file using nano in only 4 steps:</p>
+<p>Your screen likely looks similar to this:</p>
+<p><img src="/../../img/JupyterLabNotebookTerminalBeforeNano.png" width=650></p>
+<h3 id="1-type-nano-hellotxt">1. Type <strong><code>nano hello.txt</code></strong></h3>
+<p>This will create and open a new file <code>hello.txt</code>. If the file already exists, it will open that existing file.
+If the file is not yet in the directory, the screen looks like this:</p>
+<p><img src="/../../img/JupyterLabNotebookTerminalNanoBeforeSave.png" width=650></p>
+<h3 id="2-write-inside-the-open-file-named-hellotxt">2. Write inside the open file named <code>hello.txt</code></h3>
+<p>As you typically would type in any Document editor (eg. Word, Google Docs, etc).  You can type for example, <code>Hello Git!</code></p>
+<h3 id="3-when-ready-to-save-type-the-shortcut">3. When ready to save type the shortcut:</h3>
+<p><kbd> <strong><code>CTRL</code></strong>  </kbd> <code>+</code>  <kbd> <strong><code>O</code></strong> </kbd></p>
+<p>This will declare your willingness to save the file. Click <kbd> <strong><code>ENTER</code></strong>  </kbd> to verify that you want to save the file.</p>
+<p>Now you will see it in the directory on the left as well showing that the file has now been saved.</p>
+<p><img src="/../../img/JupyterLabNotebookTerminalNanoAfterSave.png" width=650></p>
+<h3 id="4-close-the-file-and-exit-from-nano-with-the-the-shortcut">4. Close the file and exit from nano with the the shortcut:</h3>
+<p><kbd> <strong><code>CTRL</code></strong>  </kbd> <code>+</code>  <kbd> <strong><code>X</code></strong> </kbd></p>
+<p>Awesome, your file has just been saved! You can inspect using another command line function, <code>head</code>.</p>
+<p>In the terminal window at the command line, type:</p>
+<pre><code class="language-bash">head hello.txt
+</code></pre>
+<p>We will probably need soon <code>nano</code> in one of our Git tasks.</p>
+<h2 id="creating-an-environment-to-install-packages">Creating an environment to install packages</h2>
+<p>Not exactly required as the base environment within CAVATICA JupyterLab is already there.
+But as a habit I begin with creating an <a href="https://docs.conda.io">conda</a>  environment so that I can keep track of what I add.
+When we get to containerizing, you will see how using conda will help keep all of the details about what you need to install safely as minimal as you can.   We will cover that more on the containerization less, which is tomorrow.</p>
+<pre><code class="language-bash">conda create -n eos -y
+</code></pre>
+<p>Once the environment is created, you activate it as instructed</p>
+<pre><code class="language-bash">conda activate eos
+</code></pre>
+<p><img src="/../../img/JupyterLabNotebookTerminalCreateEOS.png" width=650></p>
+<p>Then I install two additional things that I use on a regular basis, <code>GitHub CLI</code> and <code>emacs</code></p>
+<pre><code class="language-bash">conda install -c conda-forge gh -y
+</code></pre>
+<h3 id="optionally-install-emacs">(Optionally install emacs)</h3>
+<pre><code class="language-bash">conda install -c conda-forge emacs -y
+</code></pre>
+<p>More on <a href="https://anaconda.org/anaconda/repo"><em><code>Anaconda</code></em></a> and packages later.</p>
+<h2 id="configuring-our-github-user-information">Configuring our GitHub user information</h2>
+<p>To be able to use Git and GitHub from the command line we need to configure the information related to our GitHub user. Let's follow the commands below to set in the workspace the required information.</p>
+<h3 id="set-user-name">Set user <em><strong>name</strong></em></h3>
+<p>Replace <em><code>&lt;my github user name&gt;</code></em> with your actual GitHub email.</p>
+<pre><code class="language-bash">git config --global user.name &lt;my github user name&gt;
+</code></pre>
+<h3 id="set-user-email">Set user <em><strong>email</strong></em></h3>
+<p>Replace <em><code>&lt;my email associated with my github user name&gt;</code></em> with your actual GitHub email.</p>
+<pre><code class="language-bash">git config --global user.email &lt;my email associated with my github user name&gt;
+</code></pre>
+<h3 id="optional-set-preferred-file-editor-eg-nano-or-emacs">(Optional) Set preferred file editor eg <em><strong>nano</strong></em> or <em><strong>emacs</strong></em></h3>
+<pre><code class="language-bash">git config --global core.editor nano
+</code></pre>
+<p>Or if you like <em><code>emacs</code></em>, or <em><code>vim</code></em>, change it to your desired <em><code>editor</code></em>.</p>
+<pre><code class="language-bash">git config --global core.editor emacs
+</code></pre>
+<h2 id="return-to-agenda"><a href="../day-2-code-versioning/">Return to Agenda</a></h2>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

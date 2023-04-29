@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-2-code-versioning/keeping-your-repository-fork-in-sync/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Keeping your repository fork in sync - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Keeping your repository fork in sync";
+        var mkdocs_page_input_path = "classes/day-2-code-versioning/keeping-your-repository-fork-in-sync.md";
+        var mkdocs_page_url = "/eos/classes/day-2-code-versioning/keeping-your-repository-fork-in-sync/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1-reasoning/day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-3-containerization/day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-4-workflow-development/day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-5-workflow-execution/day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Keeping your repository fork in sync</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-2-code-versioning/keeping-your-repository-fork-in-sync.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="keeping-your-repository-fork-in-sync">Keeping your Repository Fork in Sync</h2>
+<p>Let's now fork the repository which held the volcano plot yesterday.  <a href="https://github.com/NIH-NICHD/exampleVolcanoPlotNotebook">Fork the https://github.com/NIH-NICHD/exampleVolcanoPlotNotebook</a> repository now.</p>
+<h3 id="lets-fork-the-volcano-plot-repository">Let's fork the volcano plot repository</h3>
+<p><em><strong>Step 1</strong></em> Navigate in your browser window to <em>https://github.com/NIH-NICHD/exampleVolcanoPlotNotebook</em></p>
+<p><img src="/../../img/GitHubNIHNICHDexampleVolcanoPlot.png" width=650></p>
+<p><em><strong>Step 2</strong></em> Create a Fork</p>
+<p>In the browser on the right of the screen you see,  <em>Edit Pins</em> <em>Watch</em> and then <em>Fork</em> select <em>Fork</em>
+Select where you want to fork the repository, your own GitHub repository.</p>
+<p><img src="/../../img/GitHubNIHNICHDexampleVolcanoPlotCreateAFork.png" width=650></p>
+<p>You will see the progress window that shows the <em>Forking</em> is in progress</p>
+<p><img src="/../../img/GitHubNIHNICHDexampleVolcanoPlotForkProgress.png" width=650></p>
+<p>Upon success, you will see the following screen</p>
+<p><img src="/../../img/GitHubNIHNICHDexampleVolcanoPlotForkComplete.png" width=650></p>
+<h2 id="clone-your-repository-examplevolcanoplotpng">Clone your repository exampleVolcanoPlot.png"</h2>
+<p>These words <em>Clone</em> <em>Fork</em> <em>Pull</em> are the language of Git and GitHub.   But they mean as follows:</p>
+<p><em><strong>Clone</strong></em> - make a working copy of someone elses repository.</p>
+<p><em><strong>Fork</strong></em> - make a copy of someone else's repository, but this one I will make edits to and try to make a contribution.</p>
+<p><em><strong>Pull</strong></em> - pull a version of the repository</p>
+<p><em><strong>Push</strong></em> - push my changes back to the repository.</p>
+<h2 id="synchronizing-your-fork">Synchronizing Your Fork</h2>
+<p>Navigate to your repository within a new <em><code>Chrome browser tab</code></em> on GitHub - https://github/[<em><code>insert your GitHub user name here</code></em>]/exampleVolcanoPlotNotebook.</p>
+<p><img src="/../../img/GitHubKeepingForkInSyncWithMainRepository.png"></p>
+<p>In my case, you will see the NIH-NICHD repository commits behind the <em>adeslatt/exampleVolcanoPlotNotebook</em></p>
+<p>So I navigate to the button below code and press the <img src="/../../img/GitHubBranchSyncForkButton.png" width=100></p>
+<p>I then get presented the screen:</p>
+<p><img src="/../../img/GitHubUpdatingBranchWithMainRepository.png"></p>
+<p>And I press the  <img src="/../../img/GitHubBranchUpdateBranchButton.png" width=100>.</p>
+<p>And we have synchronize success.</p>
+<p><img src="/../../img/GitHubBranchUpdateSuccess.png"></p>
+<p>But your repositories since they were a fork of the out-of-date repository -- need now to be updated, so let's go ahead and spend a few moments getting your repositories in sync.</p>
+<p>Your repository is now up-to-date with the master adeslatt/exampleVolcanoPlotNotebook</p>
+<h2 id="return-to-day-2">Return to Day 2</h2>
+<p><a href="../day-2-code-versioning/">Return to Day 2</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-3-containerization/building-dockerfiles/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Building dockerfiles - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Building dockerfiles";
+        var mkdocs_page_input_path = "classes/day-3-containerization/building-dockerfiles.md";
+        var mkdocs_page_url = "/eos/classes/day-3-containerization/building-dockerfiles/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1-reasoning/day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2-code-versioning/day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-4-workflow-development/day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-5-workflow-execution/day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Building dockerfiles</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-3-containerization/building-dockerfiles.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>
+<img src="/../../img/Moby-Logo.png" width=200>
+</p>
+<p><b>
+</b></p>
+<h1 id="building-dockerfiles">Building Dockerfiles</h1>
+<p>We have now learned that we can control our environment with <a href="https://conda.io">conda</a>.   If you haven't done that lesson, it would be best for you to go through that lesson before beginning with this step.  The <a href="../creating-a-conda-environment/">Conda Lesson</a> will show you how to create a clean environment.</p>
+<p>Now we will show how to build an Docker image <a href="https://www.docker.com/">Docker</a> from a Dockerfile and we will use this in our workflow in three ways:  in a Nextflow workflow script, in a common workflow script and as an Application within CAVATICA.</p>
+<h2 id="what-is-a-docker-image-and-a-dockerfile">What is a Docker image and a Dockerfile</h2>
+<p>Docker images are created by using a so called <code>Dockerfile</code> i.e. a simple text file 
+containing a list of commands to be executed to assemble and configure the image
+with the software packages required.    </p>
+<p>In this step, you will create a Docker image containing the FastQC &amp; MultiQC tools.</p>
+<p>Warning: the Docker build process automatically copies all files that are located in the current directory to the Docker daemon in order to create the image. This can take a lot of time when big/many files exist. For this reason, it's important to <em>always</em> work in a directory containing only the files you really need to include in your Docker image. </p>
+<p>Alternatively, you can use the <code>.dockerignore</code> file to select the path to exclude from the build. </p>
+<h2 id="navigate-to-the-google-shell-window">Navigate to the Google Shell Window</h2>
+<p>We will use both the editor and the shell terminal window to accomplish these next tasks.</p>
+<p>If you do not already have this activated, activate your environment we just made.</p>
+<p>Copy the lines below or type in your own terminal window.</p>
+<pre><code class="language-bash">conda activate eos
+</code></pre>
+<h2 id="creating-your-first-dockerfile">Creating your first Dockerfile</h2>
+<p>Then make the clean directory for us to work in.   Copy the lines here below into your own window.</p>
+<pre><code class="language-bash">mkdir fastqc-docker
+</code></pre>
+<p>Now navigate into that directory, again you can type this or simply copy the lines below in your google shell terminal window.</p>
+<pre><code class="language-bash">cd fastqc-docker
+</code></pre>
+<p>Now we are going to create our first <code>Dockerfile</code>
+<code>touch</code> is another handy <code>bash</code> command for creating an empty file.</p>
+<pre><code class="language-bash">touch Dockerfile
+</code></pre>
+<p>The <code>docker</code> application requires the exact filename <code>Dockerfile</code> when creating the image.</p>
+<p>In the google shell editor window this time, open the file named <code>Dockerfile</code></p>
+<p><img src="/../../img/GoogleShellDockerFile1.png"></p>
+<p>Copy the contents of the window below and paste it into your window.</p>
+<pre><code class="language-Dockerfile"># Full contents of Dockerfile
+
+FROM continuumio/miniconda3
+LABEL description=&quot;Base docker image with conda and util libraries&quot;
+ARG ENV_NAME=&quot;fastqc&quot;
+
+# Install the conda environment
+COPY environment.yml /
+RUN conda env create --quiet --name ${ENV_NAME} --file /environment.yml &amp;&amp; conda clean -a
+
+# Add conda installation dir to PATH (instead of doing 'conda activate')
+ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
+</code></pre>
+<p>After pasting in the window, your file should look like this:</p>
+<p><img src="/../../img/GoogleShellDockerfile2.png"></p>
+<p>The <code>docker</code> application understands the commands <code>FROM</code>, <code>LABEL</code>, <code>ARG ENV_NAME</code>, <code>COPY</code>, <code>RUN</code> and <code>ENV PATH</code>.<br />
+It also knows that <code>#</code> are comments and are for the human reader that is reading this file to understand what is happening within the file itself.</p>
+<p>The <code>base</code> image we are using for the <code>Dockerfile</code> is from <code>continuumio</code> the maker of our <code>miniconda3</code> which we installed earlier.   It is because of that environment that we do not need to install <code>conda</code>, it is part of the image.  We are using the function <code>COPY</code> to bring it into the image. </p>
+<p>We are adding to this <code>base</code> image our new function <code>fastqc</code>.</p>
+<p>You will see later that you can <code>COPY</code> your own custom scripts for use within the container.   This is the process of <code>containerization</code>.</p>
+<p>Notice as well we are prompted to look at our quotas, not an infinite resource but pretty good availability for a free asset.</p>
+<p><img src="/../../img/GoogleShellQuotaInformation.png"></p>
+<p>Now we will inspect our <code>environment.yml</code> which is being used by <code>conda</code> to install our desired application.</p>
+<h2 id="creating-your-environmentyml-file">Creating your environment.yml File</h2>
+<p>Notice that this Docker file uses a file called <code>environment.yml</code>. </p>
+<p>Back in the terminal window again:</p>
+<p>Type at the prompt</p>
+<pre><code class="language-bash">touch environment.yml
+</code></pre>
+<p>Return to the Google Shell editor and open the file named <code>environment.yml</code> and copy the contents of the window below into that file.
+What we are doing is using <code>conda</code> to control our environment.   And this file is used within our Dockerfile to create the controlled environment and install the function, <code>fastqc</code>.   The channels listed are exactly the same channels we would have used if we wanted to make the <code>fastqc</code> application available within our environment to use on the command line.</p>
+<p>What we are doing is then reproducing this command line environment within our soon to be Docker image.</p>
+<pre><code class="language-environment.yml">name: fastqc
+channels:
+  - bioconda
+  - defaults
+dependencies:
+  - fastqc
+</code></pre>
+<h2 id="building-our-dockerfile-image-for-fastqc">Building our Dockerfile image for fastqc</h2>
+<p>Build the Docker image by using the following command: </p>
+<p>There are three steps with building a Docker image:</p>
+<ol>
+<li>build</li>
+<li>tag</li>
+<li>push</li>
+</ol>
+<p>Here below we are executing the <code>build</code> command with a tag, indicated by the <code>-t</code>.</p>
+<p>The <code>.</code> says to build in the current directory.   This is the normal way to build your <code>Docker</code> image because as we noted before, the <code>docker</code> application will use all that is within your current directory to make its image.</p>
+<pre><code class="language-bash">docker build -t fastqc .
+</code></pre>
+<p>Here the google shell asks to authorize it to complete the task.</p>
+<p><img src="/../../img/GoogleShellDockerFileAuthorize.png"></p>
+<p>When it completes, we can verify that the image has been created listing all available images with the following command:</p>
+<pre><code class="language-bash">docker images
+</code></pre>
+<h3 id="test-this-image-from-the-command-line">Test this image from the command line</h3>
+<p>By now you see what we have done.   You could install <em><code>fastqc</code></em> using the command</p>
+<pre><code class="language-bash">conda install -c bioconda fastqc -y
+</code></pre>
+<p>We see what is happening is using the <em><code>Anaconda</code></em> <em><code>channel</code></em> <em><code>bioconda</code></em> we are installing fastqc for our local use within our own file system on this small virtual instance made free for us from <em><code>Google</code></em>.</p>
+<p>Let's do that real quick to show what I mean.</p>
+<p>Go ahead and copy the line above on the command line and install fastqc within our <em><code>eos</code></em> environment.</p>
+<p>As expected it has been installed within the <em><code>binary</code></em> directory, the directory that contains <em><code>executables</code></em> and shortened to the <em><code>unix</code></em> convention to be just <em><code>bin</code></em> of our controlled environment <em><code>eos</code></em>.   </p>
+<p>This would be fine if we wanted to do local work on some fastqc files.  But it would not be available for the workflow that will be spun up on ephemeral machines where we would have to build our entire environment from scratch.   But I have made the argument, that what is more sustainable is if we containerize at the process level, our work will be more durable, more portable, and more repurposable.  That is it will be available for me to use for future work.</p>
+<p>So we built a container image.   Now how could we use that container image?</p>
+<p>To test this tool from the command line </p>
+<p>Set up an environment variable capturing your current command line:</p>
+<pre><code class="language-bash">PWD=$(pwd)
+</code></pre>
+<p>To make our local directory available to the image, which is a self-contained environment, we need to do something called mounting and use your current directory and call the tool now encapsulated within the environment.   </p>
+<p>I use this command to do that.</p>
+<pre><code class="language-bash">docker run -it -v $PWD:$PWD -w $PWD fastqc fastqc -h
+</code></pre>
+<p>You can read more about what is happening in detail with <a href="https://docs.docker.com/get-started/overview/">Docker containers and images</a>.   </p>
+<p>You don't need to know every detail to use them.</p>
+<h3 id="add-this-code-to-your-github-repository">Add this code to your GitHub repository</h3>
+<p>It is a best practice with GitHub to always add a <em><code>README.md</code></em>.   Let's add this file and then from the command line use the <em><code>GitHub</code></em> command line tools to push this to our <em><code>GitHub</code></em> repository.</p>
+<pre><code class="language-bash">touch README.md
+</code></pre>
+<p>Open with the Code Editor (the Markdown Editor is experimental).  To do so, hover over the <em><code>README.md</code></em> file and click <em><code>Open With...</code></em> and select <em><code>Code Editor</code></em>.</p>
+<p><img src="/../../img/GoogleShellSelectCodeEditor.png"></p>
+<p>Copy the contents here that explain what we have in this repository</p>
+<pre><code class="language-bash"># fastqc-docker
+Build a Container for fastqc from bioconda
+
+Steps to build this docker container.
+1. Look up on [anaconda](https://anaconda.org/) the tool you wish to install
+2. create an `environment.yml` file either manually or automatically
+3. Use the template `Dockerfile` modifying if necessary (in our case we have no custom files for the `src` directory so we do not use that)
+4. Build the Docker Image
+5. Set up GitHub Actions
+
+To build your image from the command line:
+* Can do this on [Google shell](https://shell.cloud.google.com) - docker is installed and available
+
+\```bash
+docker build -t fastqc .
+\```
+
+To test this tool from the command line 
+
+Set up an environment variable capturing your current command line:
+\```bash
+PWD=$(pwd)
+\```
+
+Then mount and use your current directory and call the tool now encapsulated within the environment.
+\```bash
+docker run -it -v $PWD:$PWD -w $PWD fastqc fastqc -h
+\```
+
+</code></pre>
+<p>Now edit the file (I added the <em><code>\</code></em> so Markdown would ignore the data but it means we need to edit them out for the <em><code>README.md</code></em> to properly render on the repo.</p>
+<p>Please remove all the <em><code>\</code></em>'s the file will look like this:</p>
+<p><img src="/../../img/GoogleShellFastqcREADMEfile.png" width=650></p>
+<h3 id="use-github-command-line-tool-gh-to-authenticate-before-we-push-create-our-repository">Use <em><code>GitHub</code></em> Command line tool <em><code>gh</code></em> to authenticate before we push create our repository.</h3>
+<p>The Google shell comes with the <em><code>gh</code></em> already installed.  So we just begin with authentication.</p>
+<pre><code class="language-bash">gh auth login
+</code></pre>
+<p>As we did yesterday, authenticate with your <em><code>Personal Authentication Token</code></em></p>
+<pre><code class="language-bash">(eos) ad376@cloudshell:~/fastqc-docker$ gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations? HTTPS
+? Authenticate Git with your GitHub credentials? Yes
+? How would you like to authenticate GitHub CLI?  [Use arrows to move, type to filter]
+  Login with a web browser
+&gt; Paste an authentication token
+</code></pre>
+<p>Now we can from the command line create this repository.</p>
+<p>Let's go ahead and tell <em><code>git</code></em> who we are.</p>
+<pre><code class="language-bash">git config --global user.email &quot;adeslat@scitechcon.org&quot;
+git config --global user.name &quot;adeslatt&quot;
+</code></pre>
+<p>Following <a href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-with-github-cli"><em><code>GitHub</code></em>'s updated instructions on how to create a new repository from the command line</a></p>
+<p>We now type</p>
+<pre><code class="language-bash">git init -b main
+</code></pre>
+<p>Which will return</p>
+<pre><code class="language-bash">Initialized empty Git repository in /home/ad376/fastqc-docker/.git/
+</code></pre>
+<p>And then we type</p>
+<pre><code class="language-bash">git add . &amp;&amp; git commit -m &quot;initial commit&quot;
+</code></pre>
+<p>which returns something like this.</p>
+<pre><code class="language-bash">[main (root-commit) d1e421f] initial commit
+ 3 files changed, 33 insertions(+)
+ create mode 100644 Dockerfile
+ create mode 100644 README.md
+ create mode 100644 environment.yml
+</code></pre>
+<p>We then use the <em><code>gh repo create</code></em> command to create the reposistory.</p>
+<pre><code class="language-bash">gh repo create
+</code></pre>
+<p>Which then prompts us to what we need to do -- important is that what we want to do is <em><code>Push an existing local repository to GitHub</code></em>.   The tool's remainder defaults are acceptable, because we staged ourselves with the name of the directory.</p>
+<pre><code class="language-bash">(eos) ad376@cloudshell:~/fastqc-docker$ gh repo create
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name fastqc-docker
+? Description a container for the bioconda command fastqc
+? Visibility Public
+✓ Created repository adeslatt/fastqc-docker on GitHub
+? Add a remote? Yes
+? What should the new remote be called? origin
+✓ Added remote https://github.com/adeslatt/fastqc-docker.git
+? Would you like to push commits from the current branch to &quot;origin&quot;? Yes
+✓ Pushed commits to https://github.com/adeslatt/fastqc-docker.git
+</code></pre>
+<h2 id="building-the-multiqc-docker-image">Building the <code>multiqc</code> Docker image</h2>
+<p>Navigate to the top of your home directory</p>
+<pre><code class="language-bash">cd ~
+</code></pre>
+<p>Clone the multiqc-docker repository.</p>
+<pre><code class="language-bash">git clone https://github.com/adeslatt/multiqc-docker.git
+</code></pre>
+<h2 id="creating-your-second-dockerfile">Creating Your Second Dockerfile</h2>
+<p>Navigate now to your home directory on the google shell.  Remember that <em><code>..</code></em> is the parent directory.</p>
+<pre><code class="language-bash">cd ..
+</code></pre>
+<pre><code class="language-bash">mkdir multiqc-docker
+</code></pre>
+<p>Now navigate into that directory, again you can type this or simply copy the lines below in your google shell terminal window.</p>
+<pre><code class="language-bash">cd multiqc-docker
+</code></pre>
+<p>Now we are going to create our first <code>Dockerfile</code>
+<code>touch</code> is another handy <code>bash</code> command for creating an empty file.</p>
+<pre><code class="language-bash">touch Dockerfile
+</code></pre>
+<p>The <code>docker</code> application requires the exact filename <code>Dockerfile</code> when creating the image.</p>
+<p>Again in the google shell editor window open the file named <code>Dockerfile</code></p>
+<p>Copy the contents of the window below and paste it into your window.</p>
+<pre><code class="language-Dockerfile"># Full contents of Dockerfile
+
+FROM continuumio/miniconda3
+LABEL description=&quot;Base docker image with conda and util libraries&quot;
+ARG ENV_NAME=&quot;multiqc&quot;
+
+# Install the conda environment
+COPY environment.yml /
+RUN conda env create --quiet --name ${ENV_NAME} --file /environment.yml &amp;&amp; conda clean -a
+
+# Add conda installation dir to PATH (instead of doing 'conda activate')
+ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
+</code></pre>
+<h2 id="creating-your-multiqc-environmentyml-file">Creating your multiqc environment.yml File</h2>
+<p>Back in the terminal window again:</p>
+<p>Type at the prompt</p>
+<pre><code class="language-bash">touch environment.yml
+</code></pre>
+<p>What we are doing is then reproducing this command line environment within our soon to be Docker image.</p>
+<pre><code class="language-environment.yml">name: multiqc
+channels:
+  - bioconda
+  - defaults
+dependencies:
+  - multiqc
+</code></pre>
+<p>And build the image</p>
+<pre><code class="language-bash">docker build -t multiqc .
+</code></pre>
+<h3 id="inspect-what-images-you-have-now-available-to-you-locally">Inspect what images you have now available to you locally</h3>
+<p>You can see what you have built -- and see that we have <code>tag</code>ged our files in a certain way</p>
+<pre><code class="language-bash">docker images
+</code></pre>
+<h3 id="add-this-multiqc-code-to-your-github-repository">Add this multiqc code to your GitHub repository</h3>
+<p>It is a best practice with GitHub to always add a <em><code>README.md</code></em>.   Let's add this file and then from the command line use the <em><code>GitHub</code></em> command line tools to push this to our <em><code>GitHub</code></em> repository.</p>
+<pre><code class="language-bash">touch README.md
+</code></pre>
+<p>Open with the Code Editor (the Markdown Editor is experimental).  To do so, hover over the <em><code>README.md</code></em> file and click <em><code>Open With...</code></em> and select <em><code>Code Editor</code></em>.</p>
+<p><img src="/../../img/GoogleShellSelectCodeEditor.png"></p>
+<pre><code class="language-bash"># multiqc-docker
+Build a Container for multiqc from bioconda
+
+Steps to build this docker container.
+1. Look up on [anaconda](https://anaconda.org/) the tool you wish to install
+2. create an `environment.yml` file either manually or automatically
+3. Use the template `Dockerfile` modifying if necessary (in our case we have no custom files for the `src` directory so we do not use that)
+4. Build the Docker Image
+5. Set up GitHub Actions
+
+To build your image from the command line:
+* Can do this on [Google shell](https://shell.cloud.google.com) - docker is installed and available
+
+\```bash
+docker build -t multiqc .
+\```
+
+To test this tool from the command line 
+
+Set up an environment variable capturing your current command line:
+\```bash
+PWD=$(pwd)
+\```
+
+Then mount and use your current directory and call the tool now encapsulated within the environment.
+\```bash
+docker run -it -v $PWD:$PWD -w $PWD multiqc multiqc -h
+\```
+
+</code></pre>
+<p>Now edit the file (I added the <em><code>\</code></em> so Markdown would ignore the data but it means we need to edit them out for the <em><code>README.md</code></em> to properly render on the repo.</p>
+<p>Please remove all the <em><code>\</code></em>'s the file will look like this:</p>
+<p>After pasting in the window, your file should look like this:</p>
+<p><img src="/../../img/GoogleShellMultiqcDockerfile.png" width=650></p>
+<p>We now type</p>
+<pre><code class="language-bash">git init -b main
+</code></pre>
+<p>Which will return</p>
+<pre><code class="language-bash">Initialized empty Git repository in /home/ad376/fastqc-docker/.git/
+</code></pre>
+<p>And then we type</p>
+<pre><code class="language-bash">git add . &amp;&amp; git commit -m &quot;initial commit&quot;
+</code></pre>
+<p>which returns something like this.</p>
+<pre><code class="language-bash">[main (root-commit) d1e421f] initial commit
+ 3 files changed, 33 insertions(+)
+ create mode 100644 Dockerfile
+ create mode 100644 README.md
+ create mode 100644 environment.yml
+</code></pre>
+<p>We then use the <em><code>gh repo create</code></em> command to create the reposistory.</p>
+<pre><code class="language-bash">gh repo create
+</code></pre>
+<p>Which then prompts us to what we need to do -- important is that what we want to do is <em><code>Push an existing local repository to GitHub</code></em>.   The tool's remainder defaults are acceptable, because we staged ourselves with the name of the directory.</p>
+<pre><code class="language-bash">(eos) ad376@cloudshell:~/multiqc-docker$ gh repo create
+? What would you like to do? Push an existing local repository to GitHub
+? Path to local repository .
+? Repository name multiqc-docker
+? Description a container for the bioconda command multiqc
+? Visibility Public
+✓ Created repository adeslatt/fastqc-docker on GitHub
+? Add a remote? Yes
+? What should the new remote be called? origin
+✓ Added remote https://github.com/adeslatt/multiqc-docker.git
+? Would you like to push commits from the current branch to &quot;origin&quot;? Yes
+✓ Pushed commits to https://github.com/adeslatt/multiqc-docker.git
+</code></pre>
+<p>Upon success your repository will be in place on your GitHub.</p>
+<h2 id="recap">Recap</h2>
+<ul>
+<li>We have created a Dockerfile using the Google Shell Editor</li>
+<li>We have created the environment.yml file also with the Google Shell Editor</li>
+<li>We have used the new command placed our desired function <code>fastqc</code> within the <code>environment.yml</code> file for the ultimate Docker container.</li>
+<li>We built the container for the application <code>fastqc</code> in the <code>fastqc-docker</code> subdirectory.</li>
+<li>We used <em><code>GitHub</code></em> command line tool <em><code>gh</code></em> to take our local repositories and put both up on GitHub.</li>
+<li>We inspected our images.</li>
+</ul>
+<p>Tomorrow, we will make our first workflow and show how to use these containers within our private repository on CAVATICA</p>
+<p><a href="../day-3-containerization/">Return to the Agenda</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

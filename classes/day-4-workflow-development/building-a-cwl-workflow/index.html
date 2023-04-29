@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-4-workflow-development/building-a-cwl-workflow/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Building A [Common Workflow Language (CWL) Workflow](https://www.commonwl.org/) - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Building A [Common Workflow Language (CWL) Workflow](https://www.commonwl.org/)";
+        var mkdocs_page_input_path = "classes/day-4-workflow-development/building-a-cwl-workflow.md";
+        var mkdocs_page_url = "/eos/classes/day-4-workflow-development/building-a-cwl-workflow/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1-reasoning/day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2-code-versioning/day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-3-containerization/day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-5-workflow-execution/day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Building A [Common Workflow Language (CWL) Workflow](https://www.commonwl.org/)</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-4-workflow-development/building-a-cwl-workflow.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="building-a-common-workflow-language-cwl-workflow">Building A <a href="https://www.commonwl.org/">Common Workflow Language (CWL) Workflow</a></h1>
+<p>Here we now show how the same containers may be used in a CWL workflow.  </p>
+<p>If you are starting here and haven't Forked this repository into your own *<code>GitHub</code> Repository, please <a href="https://github.com/NIH-NICHD/Building-A-CWL-Script">Fork this repository</a></p>
+<p>If you have your personal <em><code>GitHub Fork</code></em> of this repository, then be sure to as changes may have been made.</p>
+<p>Now please <code>git clone</code> your personal fork of the repository for this lesson.</p>
+<pre><code class="language-bash">git clone https://github.com/NIH-NICHD/Building-A-CWL-Script.git
+</code></pre>
+<h2 id="showing-the-cwl-workflow-with-the-same-containers">Showing the CWL workflow with the same containers</h2>
+<p>Now Navigate to this class</p>
+<pre><code class="language-bash">cd Building-A-CWL-Script
+</code></pre>
+<p>Create and activate your environment, if you have not already done so.</p>
+<p>Create the <em><code>eos</code></em> environment.</p>
+<pre><code class="language-bash">conda create -n eos -y
+</code></pre>
+<p>Activate the <em><code>eos</code></em> environment.</p>
+<pre><code class="language-bash">conda activate eos
+</code></pre>
+<p>Looking at the directory we type the command:</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<p>And now we see something like this</p>
+<pre><code class="language-bash">total 28
+drwxr-xr-x 2 adeslat adeslat  4096 Aug 30 18:57 cwl_tools
+-rw-r--r-- 1 adeslat adeslat  1234 Aug 30 18:57 fastqc_multiqc_wf.cwl
+-rw-r--r-- 1 adeslat adeslat 18656 Aug 30 18:57 README.md
+</code></pre>
+<p>By convention, the bioinformaticians at <code>Childrens Hospital of Philadelphia</code> put their tools, their pieces for a workflow in a subdirectory they name <code>cwl_tools</code>.   This is a good convention.</p>
+<p>We can see what is put in this directory by typing:</p>
+<pre><code class="language-bash">ls -l cwl_tools
+</code></pre>
+<p>We see that there are two files:</p>
+<pre><code class="language-bash">-rw-r--r-- 1 ad376 ad376 1053 Mar 31 13:28 fastqc.cwl
+-rw-r--r-- 1 ad376 ad376 1004 Mar 31 13:28 multiqc.cwl
+</code></pre>
+<p>We can inspect that file either by opening it in an editor or by typing at the terminal</p>
+<pre><code class="language-bash">less cwl_tools/fastqc_cwl
+</code></pre>
+<p>You can learn what the command <em><code>less</code></em> does by typing in the <a href="https://explainshell.com/explain?cmd=less">Explain shell less</a>.</p>
+<p>Which just tells you it is the opposite of <em><code>more</code></em>, so lets type in the <a href="https://explainshell.com/explain?cmd=more">Explain shell more</a>.</p>
+<p>It just allows us to inspect the <em><code>contents</code></em> of the file.</p>
+<p>To exit out of our <em><code>less</code></em> command press <kbd> <strong><code>q</code></strong></p>
+<p>To make the terminal window a bit larger, press the <em><code>...</code></em> three triple <em><code>.</code></em> and pull the window larger.</p>
+<p>Type <em><code>less cwl_tools/fastqc_cwl</code></em> again, and pressing <kbd> <strong><code>space bar</code></strong></p>
+<p>Which we see now as:</p>
+<pre><code class="language-bash">cwlVersion: v1.0
+class: CommandLineTool
+id: fastqc
+requirements:
+  - class: ShellCommandRequirement
+  - class: DockerRequirement
+    dockerPull: 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
+  - class: InlineJavascriptRequirement
+  - class: ResourceRequirement
+    ramMin: ${ return inputs.ram * 1024 }
+    coresMin: $(inputs.cores)
+
+baseCommand: [mkdir]
+arguments:
+  - position: 1
+    shellQuote: false
+    valueFrom: &gt;-
+      $(inputs.outdir)
+  - position: 2
+    shellQuote: false
+    valueFrom: &gt;-
+      &amp;&amp; fastqc
+
+inputs:
+  input_reads: { type: 'File[]', inputBinding: {position: 99}, doc: &quot;Input fastq files&quot; }
+  outdir: { type: 'string?', default: &quot;results&quot;, inputBinding: { position: 2, prefix: &quot;--outdir&quot;} }
+  noextract: { type: 'boolean?', default: true, inputBinding: { position: 2, prefix: &quot;--noextract&quot;} }
+  cores: { type: 'int?', default: 2 , inputBinding: { position: 2,  prefix: &quot;--threads&quot; } }
+  ram: { type: 'int?', default: 2 }
+outputs:
+  fastqc_results:
+    type: Directory
+    outputBinding:
+      glob: $(inputs.outdir)
+</code></pre>
+<p>To <em><code>exit</code></em> from the <em><code>less</code></em> command press <kbd> <strong><code>q</code></strong></p>
+<p>We see many of the same pieces that we saw with a Nextflow script.</p>
+<p>We see <em><code>inputs:</code></em> and we see <em><code>outputs</code>.  We also see that there is a </em><code>dockerPull:</code>* command.</p>
+<pre><code class="language-bash">  dockerPull: 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
+</code></pre>
+<p>Which references the identical container that was used with Nextflow.  Before we can pull from the docker image stored on CAVATICA, we have to authenticate.</p>
+<p>With the <em><code>inputs:</code></em> we see that we have <em><code>input_reads:</code></em> which asks us to input our reads, there is also a specification for an <em><code>outdir</code></em>.</p>
+<p>While I will not go into much more detail, I will emphasize that the <code>cwl</code> script is using the same containers as we did in the <code>nextflow</code> script.</p>
+<p>We can also inspect the <code>multiqc.cwl</code> file in that way or in the editor.</p>
+<h3 id="installing-cwltool">Installing cwltool</h3>
+<p>In the same way that we installed <code>nextflow</code>, we can install <code>cwltool</code>.</p>
+<p>To find the exact command, I typically google <code>anaconda search packages</code> and arrive here:</p>
+<p><img src="/../../img/AnacondaSearchPackages_cwltool1.png"></p>
+<p>Next, I get the information on how to install:</p>
+<p><img src="/../../img/AnacondaSearchPackages_cwltool2.png"></p>
+<p>To run the pipeline:</p>
+<pre><code class="language-bash">conda install -c conda-forge cwltool -y
+</code></pre>
+<p>We verify the installation with</p>
+<pre><code class="language-bash">which cwltool
+</code></pre>
+<p>Should tell us it is in the <em><code>eos</code></em> environment <em><code>binary</code></em> or <em><code>executable</code></em> subdirectory, <em><code>bin</code></em>, in my case that is here <em><code>/home/adeslat/miniconda3/envs/eos/bin/cwltool</code></em></p>
+<h3 id="executing-with-cwltool">Executing with cwltool</h3>
+<p>Before we can execute, we need to let the tool know where the files are -- they are in fact on Zenodo </p>
+<pre><code class="language-bash">wget https://zenodo.org/record/7025773/files/test.20k_reads_1.fastq.gz
+wget https://zenodo.org/record/7025773/files/test.20k_reads_2.fastq.gz
+</code></pre>
+<p>And now we can execute, we do not need to tell the tool where the containers are because they are specified in the script.</p>
+<p>As before we can run the tools separately, before running them together.</p>
+<p>First we test out <code>fastqc</code></p>
+<pre><code class="language-bash">cwltool cwl_tools/fastqc.cwl --input_reads test.20k_reads_1.fastq.gz --input_reads test.20k_reads_2.fastq.gz
+</code></pre>
+<p>As we watch, what is happening is the first thing is the <em><code>docker image</code></em> is pulled locally.</p>
+<p>If successful, the final line will read</p>
+<p><em><code>INFO Final process status is success</code></em></p>
+<p>We test out <code>multiqc</code> which uses the output of <code>fastqc</code> as its input.</p>
+<p>In this way, we are following the <em><code>Elements of Style</code></em> rules of testing in parts, before testing both together.  We are testing the two different <em><code>cwltool</code></em> scripts independently.</p>
+<p>Let's proceed.  Note that for executing the <em><code>multiqc</code></em> script, we are not providing as input the <em><code>two fastq.gz</code></em> files as we did to the <em><code>fastqc.cwl</code></em> script, but rather the <em><code>output</code></em> of this previous step is the input to <em><code>multiqc</code></em>, so we provide the <em><code>results</code></em>.</p>
+<p>Before proceeding, lets inspect the <em><code>results</code></em> subdirectory.</p>
+<p>Typing the <em><code>command line</code></em> command <em><code>ls -l</code></em> which lists in long format as we learned from <a href="https://explainshell.com/explain?cmd=ls+-l"><em><code>Explain Shell</code></em></a></p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<p>We see that yes, the command was successful and we have the same output we saw from the output of the <em><code>Nextflow</code></em> script.</p>
+<pre><code>-rw-r--r-- 1 adeslat adeslat 236403 Aug 30 16:46 test.20k_reads_1_fastqc.html
+-rw-r--r-- 1 adeslat adeslat 243006 Aug 30 16:46 test.20k_reads_1_fastqc.zip
+-rw-r--r-- 1 adeslat adeslat 246410 Aug 30 16:46 test.20k_reads_2_fastqc.html
+-rw-r--r-- 1 adeslat adeslat 263730 Aug 30 16:46 test.20k_reads_2_fastqc.zip
+</code></pre>
+<p>You can look at the <em><code>html</code></em> formatted file in the <em><code>Google shell editor window</code></em> by <em><code>right-clicking</code></em> and selecting <kbd><em><code>open with</code></em> <kbd><em><code>preview</code></em></p>
+<p>Now lets run <em><code>multiqc</code></em></p>
+<pre><code class="language-bash">cwltool cwl_tools/multiqc.cwl --fastqc_results results
+</code></pre>
+<p>If we look in the directory we now see the output from the <em><code>multiqc</code></em> run.</p>
+<p>We can inspect the output file in the same manner we inspected the <em><code>fastqc</code></em> output.</p>
+<p>Navigate to the appropriate directory in the <em><code>Cloud Editor</code></em> window, right click on the file <em><code>report.multiqc.html</code></em> and select <em><code>preview</code></em> and review the output, which is the aggregated report of the quality of both of the <em><code>fastq</code></em> files.</p>
+<h3 id="recap"><em>recap</em></h3>
+<p>We saw how to:</p>
+<ul>
+<li>install cwltool</li>
+<li>run and test fastqc and multiqc separately using the CWL language but calling the same exact docker image as we did with the Nextflow language.</li>
+</ul>
+<h2 id="stitching-together-the-two-processes-into-a-single-workflow">Stitching together the two processes into a single workflow</h2>
+<p>CWL does not use channels, but can read the output files from the first process as input to the second process, thereby permitting the stitching together of processes into a single workflow.   When we go to the CAVATICA platform, we will see how we can do this within the visual editor.</p>
+<p>These steps help us to test the processes separately before putting them together into a single workflow, adhering to our Elements of Style approach!</p>
+<p>Below is the full <code>cwl</code> script for a workflow with the two steps <code>fastqc</code> followed by <code>multiqc</code>.</p>
+<p>The <code>cwl</code> file is in the directory and is called <code>fastqc_multiqc_wf.cwl</code>.   Naming it with the <code>_wf</code> just helps us as humans to see that it is a <code>workflow</code>.</p>
+<p>Inspect the contents of this file, either in the editor or with the <em><code>less</code></em> command.</p>
+<pre><code class="language-bash">cwlVersion: v1.0
+class: Workflow
+id: fastqc_mutliqc_wf
+requirements:
+  - class: MultipleInputFeatureRequirement
+  - class: InlineJavascriptRequirement
+
+inputs:
+  input_reads: { type: 'File[]', doc: &quot;Input fastq files&quot; }
+  fastqc_outdir: { type: 'string?', default: &quot;results&quot; }
+  noextract: { type: 'boolean?', default: true, doc: &quot;FastQC flag&quot; }
+  flat: { type: 'boolean?', default: true, doc: &quot;MultiQC flag to use only static images&quot; }
+  filename: { type: 'string?', default: &quot;report.multiqc&quot;, doc: &quot;MultiQC output files prefix&quot; }
+  cores: { type: 'int?', default: 2 }
+  ram: { type: 'int?', default: 2 }
+
+outputs:
+  fastqc_results: { type: Directory, outputSource: run_fastqc/fastqc_results }
+  multiqc_zip: { type: File, outputSource: run_multiqc/multiqc_zip }
+  multiqc_html: { type: File, outputSource: run_multiqc/multiqc_html }
+
+steps:
+  fastqc:
+    run: cwl_tools/fastqc.cwl
+    in:
+      input_reads: input_reads
+      outdir: fastqc_outdir
+      noextract: noextract
+      cores: cores
+      ram: ram
+    out: [fastqc_results]
+  multiqc:
+    run: cwl_tools/multiqc.cwl
+    in:
+      fastqc_results: [fastqc/fastqc_results]
+      flat: flat
+      filename: filename
+      cores: cores
+      ram: ram
+    out: [multiqc_zip, multiqc_html]
+</code></pre>
+<p>The call to execute the combined workflow is then as follows:</p>
+<pre><code class="language-bash">cwltool fastqc_multiqc_wf.cwl --input_reads test.20k_reads_1.fastq.gz --input_reads test.20k_reads_2.fastq.gz
+</code></pre>
+<p>The <code>steps:</code> statement specifies which script to run.  It is the exact script we have previously tested and run, <code>cwl_tools/fastqc.cwl</code> followed by <code>cwl_tools/multiqc.cwl</code>.  To call this combined workflow, we call it with the input we gave the first process, <code>cwl_tools/fastqc.cwl</code>.  We do not need to specify the input to the second process, as it requires nothing more than the output of the first workflow, <code>cwl_tools/fastqc.cwl</code>.  </p>
+<p>But lets walk through some of the important steps and differences.</p>
+<h2 id="breaking-down-the-cwl-script">Breaking down the CWL Script.</h2>
+<p>One can see that there are two steps <code>fastqc</code> and <code>multiqc</code>.</p>
+<p>The steps are easily stated because the tools are further expanded in each of the separate tool definitions.   </p>
+<h3 id="steps-fastqc">steps: fastqc</h3>
+<h4 id="run">run:</h4>
+<p>The first statement in this section contains the key word <code>run:</code> after this statement is the redirection to the subdirectory and full name of the already tested tool <code>cwl_tools/fastqc.cwl</code>.</p>
+<h4 id="in">in:</h4>
+<p>The next statement <code>in:</code> outlines where the input data files are coming from - and additional details.</p>
+<h5 id="input_reads">input_reads:</h5>
+<pre><code class="language-bash">   input_reads: input_reads
+````
+redirects the machine and the reader to the default parameter definitions carried out at the beginning of the file.
+
+Going back to the top of the file we find
+
+```bash
+inputs:
+  input_reads: { type: 'File[]', doc: &quot;Input fastq files&quot; }
+</code></pre>
+<p>So we see that (and <code>input_reads</code> states the user should specify these files on the command line) which we do in our call.   Additionally the <code>type:</code> is <code>File[]</code>, indicates that the input accepts the files as an array (<code>[]</code> indicates an array) means that the parameter or variable accepts multiple types, so we would provide as input using the <code>--input_reads test.20k_reads_1.fastq.gz --input_reads test.20k_reads_2.fastq.gz</code></p>
+<h4 id="outdir-fastqc_outdir">outdir: fastqc_outdir</h4>
+<p>the <code>outdir:</code> directive redirects us to <code>fastqc_outdir</code> which again we see defined at the top of the file, just after our <code>input_reads</code>.</p>
+<pre><code class="language-bash">inputs:
+  input_reads: { type: 'File[]', doc: &quot;Input fastq files&quot; }
+  fastqc_outdir: { type: 'string?', default: &quot;results&quot; }
+</code></pre>
+<p>here this does not provide documentation (but could), but tels us that the file type is a <code>string</code> and it provides a default name <code>results</code> which we have used in our use of the file.   Theoretically we could specify another name, lets say we wanted to do so, lets call it <code>--fastqc_outdir 2023mar17_results</code>, to test our assumptions.</p>
+<pre><code class="language-bash">cwltool fastqc_multiqc_wf.cwl --input_reads test.20k_reads_1.fastq.gz --input_reads test.20k_reads_2.fastq.gz --fastqc_outdir 2023mar17_results
+</code></pre>
+<p>If we are correct, then we will now have a new directory <code>fastqc_outdir</code>, and we do!</p>
+<pre><code class="language-bash">~/Kids-First-Elements-of-Style-Workflow-Creation-Maintenance/classes/Building-A-CWL-Script$ ls -l
+total 5108
+drwxr-xr-x 2 ad376 ad376    4096 Apr  4 17:47 2022mar31_results
+drwxr-xr-x 2 ad376 ad376    4096 Mar 31 16:28 cwl_tools
+-rw-r--r-- 1 ad376 ad376    1256 Apr  4 16:57 fastqc_multiqc_wf.cwl
+-rw-r--r-- 1 ad376 ad376    4496 Mar 31 16:28 README.md
+-rw-r--r-- 1 ad376 ad376    5398 Apr  4 17:47 report.multiqc_data.zip
+-rw-r--r-- 1 ad376 ad376 1463409 Apr  4 17:47 report.multiqc.html
+drwxr-xr-x 2 ad376 ad376    4096 Mar 31 17:12 results
+-rw-r--r-- 1 ad376 ad376 1956478 Mar 29 19:09 test.20k_reads_1.fastq.gz
+-rw-r--r-- 1 ad376 ad376 1770285 Mar 29 19:09 test.20k_reads_2.fastq.gz
+</code></pre>
+<p>outdir: fastqc_outdir
+      noextract: noextract
+      cores: cores
+      ram: ram</p>
+<h3 id="steps-multiqc">steps: multiqc</h3>
+<p>Multiqc takes as input the output of the <em><code>fastqc</code></em> step.</p>
+<p>The function step is called <em><code>multiqc</code></em></p>
+<p>And the command to run is specified with the <em><code>run: cwl_tools/multiqc.cwl</code></em>.</p>
+<p>And the input is specified by the <em><code>[stepname/out]</code></em> directive which in our case is:
+<em><code>[fastqc/fastqc_results]</code></em>.</p>
+<p>As we see from this workflow <em><code>snippet</code></em>:</p>
+<pre><code class="language-bash">multiqc:
+    run: cwl_tools/multiqc.cwl
+    in:
+      fastqc_results: [fastqc/fastqc_results]
+</code></pre>
+<h4 id="recap_1">recap</h4>
+<p>In this last step, we executed the combined workflow which was done quite simply and executed successfully after debugging the separate steps.   </p>
+<ul>
+<li>we saw that we did not need to specify other input than what was required by the first <code>cwl_tools/fastqc.cwl</code> workflow, because the second workflow, <code>cwl_tools/multiqc.cwl</code> required no additional input.</li>
+<li>we executed a workflow with the combined <code>cwl_tools/fastqc.cwl</code> and <code>cwl_tools/multiqc.cwl</code>.</li>
+<li>we broke down the workflow into its pieces and parts and understood how to change some of the default parameters.</li>
+<li>we followed the Elements of Style approach and used the same <code>Docker</code> image that was used in our <code>Nextflow</code> example.</li>
+</ul>
+<h2 id="return-to-todays-day-4-agenda">Return to today's (Day 4) Agenda</h2>
+<p><a href="../day-4-workflow-development/">Return to the Agenda</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

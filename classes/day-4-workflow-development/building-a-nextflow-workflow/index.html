@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-4-workflow-development/building-a-nextflow-workflow/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Building a nextflow workflow - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Building a nextflow workflow";
+        var mkdocs_page_input_path = "classes/day-4-workflow-development/building-a-nextflow-workflow.md";
+        var mkdocs_page_url = "/eos/classes/day-4-workflow-development/building-a-nextflow-workflow/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1-reasoning/day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2-code-versioning/day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-3-containerization/day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-5-workflow-execution/day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Building a nextflow workflow</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-4-workflow-development/building-a-nextflow-workflow.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="building-a-nextflow-workflow">Building A Nextflow Workflow</h2>
+<p>If you have arrived here from the front page and have not built your <em><code>fastqc-docker</code></em> and <em><code>multiqc-docker</code></em> containers, please proceed to the <a href="../preamble/">preamble to building a Nextflow Workflow</a></p>
+<p><strong>Main outcome:</strong> </p>
+<p>During the first session you will build a <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastQC</a> &amp; <a href="https://multiqc.info/">MultiQC</a> pipeline to learn the basics of Nextflow including:</p>
+<ul>
+<li><a href="https://www.nextflow.io/docs/latest/getstarted.html?highlight=parameters#pipeline-parameters">Parameters</a></li>
+<li><a href="https://www.nextflow.io/docs/latest/process.html">Processes</a> (inputs, outputs &amp; scripts)</li>
+<li><a href="https://www.nextflow.io/docs/latest/channel.html">Channels</a></li>
+<li><a href="https://www.nextflow.io/docs/latest/operator.html">Operators</a></li>
+<li><a href="https://www.nextflow.io/docs/latest/config.html">Configuration</a></li>
+</ul>
+<h2 id="in-the-google-shell">In the Google Shell</h2>
+<p>We are going to continue use <a href="https://shell.cloud.google.com/">Google shell Cloud</a> to walk through the building of a Nextflow script and in the next session building the containers we used to do so.</p>
+<p>Inside the shell we have the following:</p>
+<ul>
+<li>
+<p><code>Docker</code> is installed</p>
+</li>
+<li>
+<p><code>conda</code> has been installed -- which we did in the previous lesson.</p>
+</li>
+<li>
+<p>The standard workflow language for Nextflow <code>nextflow</code> can be installed</p>
+</li>
+<li>
+<p>The standard workflow language for the Common Workflow Language (CWL) <code>cwltool</code> can be installed</p>
+</li>
+</ul>
+<h3 id="what-is-docker">What is <a href="https://www.docker.com/">Docker</a> <img src="/../../img/Moby-Logo.png" width=50 align=left>?</h3>
+<p>Just to recap a bit. Docker is the application we use to build our containerized images.   It turns our code into an image that can be run interactively or be placed upon a virtual machine that we spin up on CAVATICA as part of a workflow.   The logo that is associated with <code>Docker</code> is a whale but looks like a containership.   Containers revolutionized the shipping industry by creating a uniform entity that could permits disparate items to be packaged in the same manner allowing devices that do not know what they contain to carry those items.   Much in the same way that <code>packets</code> revolutionized communication with the internet.  This is why we concern ourselves with containers. </p>
+<h3 id="install-nextflow">Install Nextflow</h3>
+<p>Now we can install <code>nextflow</code> package.   To get the installation command, we again search <code>Anaconda</code> for the package details.   We see that this is a pretty popular package, there have been at the time of this writing, that this has been downloaded 162,780 times and that the last upload was 2 months and 6 days ago and we have the GitHub location of the software. </p>
+<p>Importantly, we now see how to install the <code>nextflow</code> application.</p>
+<pre><code class="language-bash">conda install -c bioconda nextflow
+</code></pre>
+<p>The package installer manages the items that need to be installed, telling us the following packages will be installed and asking if we would like to proceed.</p>
+<pre><code class="language-bash">The following NEW packages will be INSTALLED:
+
+  coreutils          bioconda/linux-64::coreutils-8.25-1
+  java-jdk           bioconda/linux-64::java-jdk-8.0.92-1
+  libgcc             pkgs/main/linux-64::libgcc-7.2.0-h69d50b8_2
+  nextflow           bioconda/linux-64::nextflow-0.24.2-0
+
+The following packages will be UPDATED:
+
+  ca-certificates    conda-forge::ca-certificates-2021.10.~ --&gt; pkgs/main::ca-certificates-2022.3.18-h06a4308_0
+
+
+Proceed ([y]/n)?
+</code></pre>
+<p>We say <code>y</code> and the package is installed.</p>
+<p>Confirming we type the following:</p>
+<pre><code class="language-bash">which nextflow
+</code></pre>
+<p>And because we have activated our environment <code>eos</code>, you will see that the <code>nextflow</code> application is installed in the <code>bin</code> which is short for <code>binary</code> location within <code>eos</code></p>
+<pre><code class="language-bash">(eos) adeslat@cloudshell:~$ which nextflow
+/home/adeslat/miniconda3/envs/eos/bin/nextflow
+</code></pre>
+<h3 id="a-getting-course-material">a) Getting Course material.</h3>
+<p>Let's use your forked version of the repository.</p>
+<p>First lets make sure it is up-to-date.</p>
+<p>To do that do the following.</p>
+<p>Follow the directions for <a href="https://github.com/NIH-NICHD/Kids-First-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Intro-to-Git-Github/why-git-and-setup.md#keeping-your-repository-fork-in-sync">keeping your repository in sync</a></p>
+<p>At this time do not worry about making a pull request.  If your repository has commits ahead at this time, do not concern yourself.</p>
+<p>Then as we did yesterday, if you have not checked out your own version.  Do so now but in your username subdirectory.</p>
+<p>After synchronizing, navigate to your subdirectory and clone the updated respository</p>
+<pre><code class="language-bash">cd adeslatt
+</code></pre>
+<p>And clone</p>
+<pre><code class="language-bash">git clone https://github.com/NIH-NICHD/Building-A-Nextflow-Script.git
+</code></pre>
+<h3 id="b-parameters-otherwise-known-as-inputs">b) Parameters (otherwise known as inputs)</h3>
+<p>Now that we have Nextflow &amp; Docker installed we're ready to run our first script and learn how we bring in data into a file.</p>
+<p>Let's open the file <code>params_reads.nf</code></p>
+<p>You see the following content:</p>
+<pre><code class="language-nextflow">// params_reads.nf
+params.reads = false
+
+println &quot;My reads: ${params.reads}&quot;
+</code></pre>
+<p>The first line is a comment.  Comments in Nextflow can begin with <code>//</code>.   Every language has a different way of indicating that this is for the human to read and not the machine.   This comment may seem silly, but when you have many files open, it is uesful to have an indication of where you are.</p>
+<p>The second line creates something for the computer.  Think of it as an empty vessel.  We can call it what we want, but in this case we are actually going to use something that our program, <code>nextflow</code> understands, <code>params</code> and create an arbitrary term <em>reads</em> Together they make what you could imagine is an element of a paragraph.  You can define many things that are of a <code>params</code> type, but for now we are just creating one thing.  Something we are calling <code>reads</code>.</p>
+<p>Finally we are setting this <code>params.reads</code> to <code>false</code>.</p>
+<p>The third line instructs the program <code>nextflow</code> to print out the value of this <code>parameter</code> upon execution of the workflow.</p>
+<p>This minimal workflow can now be executed by the <code>nextflow</code> application we have installed.</p>
+<p>We will do this and we will provide the workflow a value to <code>params.reads</code>.</p>
+<p>In this repository are two <code>fastq</code> files in a <code>directory</code> within the freshly checked out repository as follows.</p>
+<pre><code class="language-bash">nextflow run params_reads.nf --reads testdata/test.20k_reads_1.fastq.gz
+</code></pre>
+<p>The run returns the name of our file.</p>
+<h3 id="c-processes-inputs-outputs-scripts">c) Processes (inputs, outputs &amp; scripts)</h3>
+<p>Well, we have run our first <code>nextflow</code> workflow, congratulations!.</p>
+<p>Nextflow allows the execution of any command or user script by using a <code>process</code> definition. </p>
+<p>A process is defined by providing three main declarations: 
+the process <a href="https://www.nextflow.io/docs/latest/process.html#inputs">inputs</a>, 
+the process <a href="https://www.nextflow.io/docs/latest/process.html#outputs">outputs</a>
+and finally the command <a href="https://www.nextflow.io/docs/latest/process.html#script">script</a>.</p>
+<p>Let's look at the next workflow, <code>fastqc.nf</code>, we see the following:</p>
+<pre><code class="language-nextflow">//fastqc.nf
+reads = file(params.reads)
+
+process fastqc {
+
+    publishDir &quot;results&quot;, mode: 'copy'
+
+    input:
+    file(reads) from reads
+
+    output:
+    file &quot;*_fastqc.{zip,html}&quot; into fastqc_results
+
+    script:
+    &quot;&quot;&quot;
+    fastqc $reads
+    &quot;&quot;&quot;
+}
+</code></pre>
+<p>Here we created the variable <code>reads</code> which is a <code>file</code> from the command line input.</p>
+<p>We can then create the process <code>fastqc</code> including:
+ - the <a href="https://www.nextflow.io/docs/latest/process.html#directives">directive</a> <code>publishDir</code> to specify which folder to copy the output files to 
+ - the <a href="https://www.nextflow.io/docs/latest/process.html#inputs">inputs</a> where we declare a <code>file</code> <code>reads</code> from our variable <code>reads</code>
+ - the <a href="https://www.nextflow.io/docs/latest/process.html#outputs">output</a> which is anything ending in <code>_fastqc.zip</code> or <code>_fastqc.html</code> which will go into a <code>fastqc_results</code> channel
+ - the <a href="https://www.nextflow.io/docs/latest/process.html#script">script</a> where we are running the <code>fastqc</code> command on our <code>reads</code> variable</p>
+<p>We can then run our workflow with the following command:</p>
+<pre><code class="language-bash">nextflow run fastqc.nf --reads testdata/test.20k_reads_1.fastq.gz -with-docker fastqc
+</code></pre>
+<p>We are using a docker image I previously had pushed to the Seven Bridges Image repository -- in the next session I will walk through how that is done.</p>
+<p>By running Nextflow using the <code>with-docker</code> flag we can specify a Docker container to execute this command in. This is beneficial because it means we do not need to have <code>fastqc</code> installed locally on our laptop. We just need to specify a Docker container that has <code>fastqc</code> installed.</p>
+<h3 id="d-channels">d) Channels</h3>
+<p>Channels are the preferred method of transferring data in Nextflow &amp; can connect two processes or operators.</p>
+<!--
+There are two types of channels:
+1. [Queue channels](https://www.nextflow.io/docs/latest/channel.html#queue-channel) can be used to connect two processes or operators. They are usually produced from factory methods such as [`from`](https://www.nextflow.io/docs/latest/channel.html#from)/[`fromPath`](https://www.nextflow.io/docs/latest/channel.html#frompath) or by chaining it with methods such as [`map`](https://www.nextflow.io/docs/latest/operator.html#operator-map). **Queue channels are consumed upon being read.**
+2. [Value channels](https://www.nextflow.io/docs/latest/channel.html#value-channel) a.k.a. singleton channel are bound to a single value and can be read unlimited times without consuming there content. Value channels are produced by the value factory method or by operators returning a single value, such us first, last, collect, count, min, max, reduce, sum.
+-->
+
+<p>Here we will use the method <a href="https://www.nextflow.io/docs/latest/channel.html#fromfilepairs"><code>fromFilePairs</code></a> to create a channel to load paired-end FASTQ data, rather than just a single FASTQ file.</p>
+<p>To do this we will replace the code from <a href="https://github.com/NIH-NICHD/Kids-First-Elements-of-Style-Workflow-Creation-Maintenance/edit/main/classes/Building-A-Nextflow-Script/README.md#c-processes-inputs-outputs--scripts">1c</a> with the following </p>
+<pre><code class="language-nextflow">//fastqc.nf
+reads = Channel.fromFilePairs(params.reads, size: 2)
+
+process fastqc {
+
+    tag &quot;$name&quot;
+    publishDir &quot;results&quot;, mode: 'copy'
+    container 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
+
+    input:
+    set val(name), file(reads) from reads
+
+    output:
+    file &quot;*_fastqc.{zip,html}&quot; into fastqc_results
+
+    script:
+    &quot;&quot;&quot;
+    fastqc $reads
+    &quot;&quot;&quot;
+}
+</code></pre>
+<p>The <code>reads</code> variable is now equal to a channel which contains the reads prefix &amp; paired-end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value <code>name</code>. This <code>name</code> can be used as a tag for when the pipeline is run. Also, as we are now declaring two inputs the <code>set</code> keyword has to be used. Finally, we can specify the container name within the processes as a directive.</p>
+<p>To run the pipeline:</p>
+<pre><code class="language-bash">nextflow run fastqc.nf --reads &quot;testdata/test.20k_reads_{1,2}.fastq.gz&quot; -with-docker pgc-images.sbgenomics.com/adeslat/fastqc:v0.11.9
+</code></pre>
+<h3 id="e-operators">e) Operators</h3>
+<p>Operators are methods that allow you to manipulate &amp; connect channels.</p>
+<p>Here we will add a new process <code>multiqc</code> &amp; use the <a href="https://www.nextflow.io/docs/latest/operator.html#collect"><code>.collect()</code></a> operator</p>
+<p>Add the multiqc process after <code>fastqc</code>:</p>
+<pre><code class="language-nextflow">//fastqc_multiqc_wf.nf
+reads = Channel.fromFilePairs(params.reads, size: 2)
+
+process fastqc {
+
+    tag &quot;$name&quot;
+    publishDir &quot;results&quot;, mode: 'copy'
+    container 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
+
+    input:
+    set val(name), file(reads) from reads
+
+    output:
+    file &quot;*_fastqc.{zip,html}&quot; into fastqc_results
+
+    script:
+    &quot;&quot;&quot;
+    fastqc $reads
+    &quot;&quot;&quot;
+}
+process multiqc {
+
+    publishDir &quot;results&quot;, mode: 'copy'
+    container 'pgc-images.sbgenomics.com/deslattesmaysa2/multiqc:v1.0'
+
+    input:
+    file ('fastqc/*') from fastqc_results.collect()
+
+    output:
+    file &quot;*multiqc_report.html&quot; into multiqc_report
+    file &quot;*_data&quot;
+
+    script:
+    &quot;&quot;&quot;
+    multiqc . -m fastqc
+    &quot;&quot;&quot;
+}
+</code></pre>
+<p>Here we have added another process <code>multiqc</code>. We have used the <code>collect</code> operator here so that if <code>fastqc</code> ran for more than two pairs of files <code>multiqc</code> would collect all of the files &amp; run only once.</p>
+<p>The pipeline can be run with the following:</p>
+<pre><code class="language-bash">nextflow run fastqc_multiqc_wf.nf --reads &quot;testdata/test.20k_reads_{1,2}.fastq.gz&quot; -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
+</code></pre>
+<h3 id="f-configuration">f) Configuration</h3>
+<p>Configuration, such as parameters, containers &amp; resources eg memory can be set in <code>config</code> files such as <a href="https://www.nextflow.io/docs/latest/config.html#configuration-file"><code>nextflow.config</code></a>.</p>
+<p>For example our <code>nextflow.config</code> file might look like this:</p>
+<pre><code>docker.enabled = true
+params.reads = false
+
+process {
+  cpus = 1
+  memory = &quot;2.GB&quot;
+
+  withName: fastqc {
+    container = &quot;pgc-images.sbgenomics.com/adeslat/fastqc:v0.11.9&quot;
+  }
+  withName: multiqc {
+    container = &quot;pgc-images.sbgenomics.com/adeslat/multiqc:v1.0dev0&quot;
+  }
+}
+</code></pre>
+<p>which are in fact the images as I stored them in the CAVATICA repository.</p>
+<p>Here we have enabled docker by default, initialised parameters, set resources &amp; containers. It is best practice to keep these in the <code>config</code> file so that they can more easily be set or removed. Containers &amp; <code>params.reads</code> can then be removed from <code>main.nf</code>.</p>
+<p>The pipeline can now be run with the following:</p>
+<pre><code class="language-bash">nextflow run fastqc_multiqc_wf.nf --reads &quot;testdata/test.20k_reads_{1,2}.fastq.gz&quot;
+</code></pre>
+<h2 id="proceed-to-the-next-lesson">Proceed to the next lesson</h2>
+<p><a href="../day-4-workflow-development/">Return to the Agenda</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

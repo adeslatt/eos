@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-3-containerization/creating-a-conda-environment/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Creating a `Conda` Environment - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Creating a `Conda` Environment";
+        var mkdocs_page_input_path = "classes/day-3-containerization/creating-a-conda-environment.md";
+        var mkdocs_page_url = "/eos/classes/day-3-containerization/creating-a-conda-environment/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1-reasoning/day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2-code-versioning/day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-4-workflow-development/day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-5-workflow-execution/day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Creating a `Conda` Environment</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-3-containerization/creating-a-conda-environment.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="creating-a-conda-environment">Creating a <code>Conda</code> Environment</h1>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg" width=500></p>
+<h2 id="what-is-conda">What is <a href="https://docs.conda.io/en/latest/">conda</a></h2>
+<p>Conda is an application that we use to control our environment and manage our package installations.</p>
+<p>We will work today within a terminal window and the first thing I like to do is to make a clean environment window.   This ensures that all of the assumptions we made about our environment are clear and explicit.  Without this you may inadvertantly introduce dependicies that may complicate your building of your container and/or stitching together your workflow.</p>
+<p>When we build our container, we begin many of times using the conda environment made by the group that builds conda as a basis.  This then does give us the application conda within our environment for our use like docker.</p>
+<p>Today we will be using a terminal window within a free resource, <a href="https://shell.cloud.google.com/">Google Shell</a></p>
+<p>We will walk through those steps today with our simple example.   </p>
+<h2 id="anaconda-search-packages"><a href="https://anaconda.org/">Anaconda</a> Search Packages</h2>
+<p><img src="/../../img/AnacondaMainWindow1.png"></p>
+<p>I regularly type this in my browser window to find the packages I need to install.</p>
+<p>Anaconda environment is growing by leaps and bounds and there are more things that can be done there that I have yet to explore.</p>
+<p>In addition to well vetted packages that can be installed, this large community resource provides tutorials, data science instructions as well as whole environments where you can work, explore and learn.</p>
+<p>For example, today we already showed you how to run a jupyterlab notebook, but you want to know more.  Their site offers instruction on <a href="https://anaconda.org/ijstokes/open-data-science-with-anaconda/notebook">Jupyterlab basics</a> for you to explore.</p>
+<h2 id="logging-into-google-shell">Logging into Google Shell</h2>
+<p>For this part of our demo/hands on, we will be using google shell.  </p>
+<p>Navigate please to <a href="https://shell.cloud.google.com/">Google Shell</a></p>
+<p>It will ask you to login, please follow the prompts and do so.</p>
+<p>Upon success you will see a window like this:</p>
+<p><img src="/../../img/GoogleCloudShell1.png"></p>
+<p>We have an editor as well as a prompt.</p>
+<p>If you have items in your Google Shell, you may need to clean up a bit.  There is not much space in this <em><code>free ephemeral instance</code></em>.  </p>
+<h3 id="cleaning-up-your-space">Cleaning up your space</h3>
+<p>If you have items in your directory, lets clean up!  So we have enough room for the next few lessons.   Let's see what is there.</p>
+<p>For a shell to list the contents of a directory, you type:</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<p>You can use <em><code>Explain Shell</code></em> to explain the meaning of the command. <a href="https://explainshell.com/explain?cmd=ls+-l">Explain Shell <code>ls -l</code></a>.</p>
+<p>You can see hidden directories with the following command.</p>
+<pre><code class="language-bash">ls -la
+</code></pre>
+<p>Again, look at <em><code>Explain Shell</code></em> to explain the meaning of the command. <a href="https://explainshell.com/explain?cmd=ls+-la">Explain Shell <code>ls -la</code></a></p>
+<h2 id="installing-conda">Installing conda</h2>
+<p>We need to get the installation package for conda.  We get this package from continuum analytics, we will be installing <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>.  Miniconda is the minimal installer and all we need.</p>
+<p>Navigating to that location you will see details here:</p>
+<p><img src="/../../img/AnacondaMiniconda2.png"></p>
+<p>Which installation do we need?  Typing <code>uname -a</code> will tell us the information about our operating system and hardware basics.</p>
+<pre><code class="language-bash">uname -a
+</code></pre>
+<p>We see that we are using the <code>Linux</code> operating system, the first day I spun up this shell was on <code>March 16</code> and we see that it has the architecture <code>x86_64</code>.  A handy <code>64-bit</code> operating system.   </p>
+<p>Scroll down the window and hover your cursor over the <code>Miniconda Linux 64-bit</code> (sorry it is implicitly that this is the right installation for the <code>x86-64</code> architecture.</p>
+<p>Right click and select <code>copy link address</code>.   This gives you the unique resource locator (url) for the installation script we will be downloading onto the machine we are talking to with our <code>google cloud shell</code> window.</p>
+<p><img src="/../../img/AnacondaMiniconda3.png"></p>
+<p>Now we will use the routine <code>wget</code> to copy this installation script.   To make sure we can do this, let's make sure that we have the tool available.   To do that, we type:</p>
+<pre><code class="language-bash">which wget
+</code></pre>
+<p>In my case, it returns the full path <code>/usr/bin/wget</code>.   If you do not have <code>wget</code>, we can install it with <code>Anaconda</code> provided packages.</p>
+<p>Now to install Miniconda, so that we can use <code>conda</code> to install any and all packages we need we do as follows:</p>
+<pre><code class="language-bash">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+</code></pre>
+<p>If you haven't changed directories, you can see now that this package <code>Miniconda3-latest-Linux-x86_64.sh</code> is now in the top directory.   As we learned earlier, we can use the <code>bash</code> shell commnad <code>ls</code> to inspect the contents of our current directory.  <code>ls -l</code> provides the full path details of our directory.   We check our current working directory with the <code>bash</code> shell comand <code>pwd</code> as we learned earlier.</p>
+<pre><code class="language-bash">pwd
+</code></pre>
+<p><img src="/../../img/GoogleShellWindow2.png"></p>
+<p>For my execution, it returns <code>/home/ad376</code>.</p>
+<p>Now running the command <code>ls -l</code> we see the downloaded file <code>Miniconda3-latest-Linux-x86-64.sh</code>.</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<p>returns:</p>
+<pre><code class="language-bash">/home/ad376
+ad376@cloudshell:~$ ls -l
+total 73892
+-rw-r--r-- 1 ad376 ad376 75660608 Feb 15 19:07 Miniconda3-latest-Linux-x86_64.sh
+-rw-r--r-- 1 ad376 ad376      913 Mar 31 12:34 README-cloudshell.txt
+ad376@cloudshell:~$
+</code></pre>
+<p>To execute this script now and install the <code>conda</code> application, we type:</p>
+<pre><code class="language-bash">bash Miniconda3-latest-Linux-x86_64.sh
+</code></pre>
+<p>This will return:</p>
+<pre><code class="language-bash">Welcome to Miniconda3 py39_4.11.0
+
+In order to continue the installation process, please review the license
+agreement.
+Please, press ENTER to continue
+&gt;&gt;&gt;
+</code></pre>
+<p>press ENTER to continue and accept the terms and defaults as instructed. I used SPACE to accelerate the passing of the license - when you have time you should read the details of this license as it is interesting.   The last question is:</p>
+<pre><code class="language-bash">Do you accept the license terms? [yes|no]
+[no] &gt;&gt;&gt; yes
+</code></pre>
+<p>It returns now:</p>
+<pre><code class="language-bash">Miniconda3 will now be installed into this location:
+/home/ad376/miniconda3
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+[/home/ad376/miniconda3] &gt;&gt;&gt;
+</code></pre>
+<p>Accept the default location to install.</p>
+<p>Next you will be asked</p>
+<pre><code class="language-bash">Do you wish the installer to initialize Miniconda3
+by running conda init? [yes|no]
+[no] &gt;&gt;&gt; yes
+</code></pre>
+<p>Please answer yes to this question.</p>
+<p>When finished we can see that the file is now in our execution path is the <code>conda</code> application.</p>
+<p>While <code>conda</code> now has been installed, to activate the use of <code>conda</code> we need to <code>reboot</code> our <code>shell</code> environment.   </p>
+<p>The command <code>exec -l bash</code> will execute this restart of the bash shell.</p>
+<pre><code class="language-bash">exec -l bash
+</code></pre>
+<p>Now we can see the result:</p>
+<pre><code class="language-bash">ad376@cloudshell:~$ exec -l bash
+Welcome to Cloud Shell! Type &quot;help&quot; to get started.
+To set your Cloud Platform project in this session use “gcloud config set project [PROJECT_ID]”
+(base) ad376@cloudshell:~$
+</code></pre>
+<p>And we can see now we have the <code>conda</code> application.</p>
+<pre><code class="language-bash">which conda
+</code></pre>
+<p>returns:</p>
+<pre><code class="language-bash">/home/ad376/miniconda3/condabin/conda
+</code></pre>
+<h2 id="creating-a-clean-environment">Creating a clean environment</h2>
+<p>Now that we have <code>conda</code> we can create an environment that will keep our workspace clean.  We can name it whatever we would like, since this is the <code>Elements of Style</code> course, I choose to name my environment <code>eos</code> for short.</p>
+<p>We create an environment as follows:</p>
+<pre><code class="language-bash">conda create -n eos -y
+</code></pre>
+<p>You can see now that we now have the option to activate the environment</p>
+<pre><code class="language-bash">#
+# To activate this environment, use
+#
+#     $ conda activate eos
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+</code></pre>
+<p>Now that we have created a clean environment, we follow the directions and activate the environment, that is enter this new clean environment.</p>
+<pre><code class="language-bash">conda activate eos
+</code></pre>
+<p>We will see next to our name in the google shell, that it should look something like this:</p>
+<pre><code class="language-bash">(base) ad376@cloudshell:~$ conda activate eos
+(eos) ad376@cloudshell:~$
+</code></pre>
+<p>The <code>(eos)</code> indicating that we are in that environment.</p>
+<p>You can list all your environments list all your environments with the following command:</p>
+<pre><code class="language-bash">conda env list
+</code></pre>
+<h2 id="recap">Recap</h2>
+<p>We have learned in this lesson</p>
+<ul>
+<li>We started a <code>bash shell environment</code> using our browser and the <a href="https://shell.cloud.google.com">shell</a></li>
+<li>We explored the open community-based resources offered through <a href="https://anaconda.org">Anaconda</a></li>
+<li>We used <code>wget</code> available within the <a href="https://shell.cloud.google.com">shell</a> and got the installation package necessary to install <code>conda</code> </li>
+<li>We installed <code>conda</code> and </li>
+<li>We used numerous command line arguments </li>
+<li>We used <code>conda</code> to create a new clean environment.</li>
+</ul>
+<p>We now move on to build Docker images which we will use in a workflow.</p>
+<h2 id="return-to-the-agenda"><a href="../day-3-containerization/">Return to the Agenda</a></h2>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

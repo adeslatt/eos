@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-1-reasoning/running-a-jupyterlab-notebook/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Running a jupyterlab notebook - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Running a jupyterlab notebook";
+        var mkdocs_page_input_path = "classes/day-1-reasoning/running-a-jupyterlab-notebook.md";
+        var mkdocs_page_url = "/eos/classes/day-1-reasoning/running-a-jupyterlab-notebook/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2-code-versioning/day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-3-containerization/day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-4-workflow-development/day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-5-workflow-execution/day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Running a jupyterlab notebook</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-1-reasoning/running-a-jupyterlab-notebook.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><img src="/../../img/JupyterLabLogoWithName.png"  width="250"></p>
+<p>To begin, your screen should look like this:</p>
+<p><img src="/../../img/CAVATICAJupyterLabNotebookStartupScreen.png" width=650></p>
+<p>This is a <a href="https://jupyter.org">JupyterLab</a> environment.  Project Jupyter is a non-profit, open-source project, born out of the IPython Project in 2014 as it evolved to support interactive data science and scientific computing across all programming languages. Jupyter will always be 100% open-source software, free for all to use and released under the liberal terms of the modified BSD license. </p>
+<p><img src="/../../img/JupyterProjectAbout.png" width=650></p>
+<p>I encourage you to explore Project Jupyter and understand the directions they are going in and how they support open, transparent, re-purposeable and literate programming.  </p>
+<p>The JupyterLab Notebook environment supports at this point 40 languages, in kernels, providing a flexible way to achieve not only the ends of what we are trying to do with analysis, but in a well documented, clear and literate manner.</p>
+<p><img src="/../../img/JupyterLabTheClassicNotebookForLiterateProgramming.png" width=650></p>
+<p>Now that we are at the terminal window, we need to bring our lesson in hand -- and to do that, we are going to begin with <em><code>forking</code></em> our <em><code>GitHub</code></em> repository.</p>
+<h2 id="clone-a-github-repository">Clone a GitHub Repository</h2>
+<p>We are going to clone a GitHub repository - to do so navigate in your browser to <a href="https://github.com/NIH-NICHD/exampleVolcanoPlotNotebook">Example Volcano Plot Notebook</a></p>
+<p><img src="/../../img/exampleVolcanoPlotCodeClone.png" width = 500></p>
+<h2 id="copy-the-link-to-clone-the-repository">Copy the Link to Clone the repository</h2>
+<p>Next, navigate to the 🟦<code>Code</code> button on the right and select <code>HTTPS</code> and copy the link.</p>
+<h2 id="clone-the-repository-in-the-jupyterlab-terminal-window">Clone the repository in the Jupyterlab terminal window</h2>
+<p>Return to your CAVATICA Window and go back to your JupyterLab notebook.
+And select the <code>terminal window</code></p>
+<p><img src="/../../img/cloneExampleVolcanoPlotNotebook.png" width=500></p>
+<p>Now we want to clone the repository fork we made:</p>
+<p>At the prompt type:</p>
+<pre><code class="language-bash">git clone https://github.com/NIH-NICHD/exampleVolcanoPlotNotebook.git
+</code></pre>
+<p>Now let's use our <em><code>cd</code></em> command to change into the appropriate directory.</p>
+<pre><code class="language-bash">cd exampleVolcanoPlotNotebook
+</code></pre>
+<h2 id="recap">Recap</h2>
+<p>In this lesson:
+* We logged into CAVATICA
+* We started an interactive analysis with JupyterLab
+* We authenticated with GitHub
+* We executed and saw some Command Line Functions
+* We generated a Volcano Plot in a JupyterLab notebook running an <code>R</code> kernel</p>
+<h2 id="additional-resources">Additional resources:</h2>
+<ul>
+<li>CAVATICA documentation for the JupyterLab interface: https://docs.cavatica.org/docs/editor-quick-reference</li>
+<li>Official documentation from project JupyterLab: https://jupyterlab.readthedocs.io/en/stable/ </li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

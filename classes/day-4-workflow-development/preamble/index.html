@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-4-workflow-development/preamble/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Preamble to building workflows using containers - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Preamble to building workflows using containers";
+        var mkdocs_page_input_path = "classes/day-4-workflow-development/preamble.md";
+        var mkdocs_page_url = "/eos/classes/day-4-workflow-development/preamble/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-1-reasoning/day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2-code-versioning/day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-3-containerization/day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-5-workflow-execution/day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Preamble to building workflows using containers</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-4-workflow-development/preamble.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="preamble-to-building-workflows-using-containers">Preamble to building workflows using containers</h1>
+<p>In this session, we will use the two Docker images we built in the previous sections and we will how to put these together into a single workflow using the Nextflow workflow language.  Later, we will learn out to put these two Docker images into a single workflow using the CWL or Common Workflow Language. </p>
+<p>We will:</p>
+<ul>
+<li>Login to <a href="https://shell.cloud.google.com/">Google shell cloud</a></li>
+<li>Build both of our docker images of the processes <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">fastqc</a> and <a href="https://multiqc.info/">multiqc</a> using the package installers maintained on <a href="https://anaconda.org">Anaconda</a></li>
+<li>Login to <a href="https://cavatica.sbgenomics.com">CAVATICA</a> and generate our CAVATICA Authentication Token</li>
+<li>Tag our Docker images</li>
+<li>Authenticate with Cavatica within the Google Shell</li>
+<li>Push our Docker images to our own personal repository on Cavatica</li>
+<li>Use our own Docker images in the Nextflow and CWL scripts we write.</li>
+</ul>
+<h2 id="login-to-google-shell-cloud">Login to <a href="https://shell.cloud.google.com/">Google shell cloud</a></h2>
+<p>Please proceed to login to your google shell.  If you did not work with us yesterday, please return to the <a href="https://github.com/NIH-NICHD/Kids-First-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Building-Dockerfiles/README.md#building-dockerfiles">previous lesson</a> to build your <em><code>fastqc-docker</code></em> and <em><code>multiqc-docker</code></em> images.</p>
+<p>When it comes up, type:</p>
+<pre><code class="language-bash">docker images
+</code></pre>
+<p>You will see there are no images from yesterday.   If you recall, I mentioned that these were ephemeral instances, so the new machine that has just been spun up, though it maintains your file structure, does not have your image anymore.</p>
+<h2 id="build-your-fastqc-docker-image">Build your Fastqc Docker Image</h2>
+<p>Lets first build Fastqc Docker Image.</p>
+<p>If you recall, yesterday, I said there are only <em><code>3</code></em> steps in building a Docker Image.</p>
+<ol>
+<li>Build</li>
+<li>Tag</li>
+<li>Push</li>
+</ol>
+<p>Yesterday, we did not push.   What is pushing?  To make our Docker image available to us, we use a <em><code>Repository</code></em>.  We are working on CAVATICA and CAVATICA offers to you the option of creating your own repository.   Think of the repository just like your GitHub, it is a location where you can keep and use your own Docker Images.  To be able to <em><code>Push</code></em> our docker images to our repository, we need to <em><code>Authenticate</code></em> and we <em><code>Authenticate</code></em> with our very own <em><code>Developer's Token</code></em>.   We will get to that.</p>
+<p>Please proceed to your <em><code>fastqc-docker</code></em> subdirectory.</p>
+<pre><code class="language-bash">cd fastqc-docker
+</code></pre>
+<p>As a best practice, since you now have pushed this into <em><code>GitHub</code></em>, you should out of a habit type the following commands:</p>
+<pre><code class="language-bash">git status
+</code></pre>
+<p>Likely there are no changes, but if you were collaborating with someone, they may have made changes, or if you are working on multiple systems, again you should do the following:</p>
+<pre><code class="language-bash">git pull
+</code></pre>
+<p>We do not need to authenticate, but if there were changes, we would proceed as we did yesterday to set up our <em><code>user.name</code></em> and <em><code>user.email</code></em>.   But we do not need to do this at the moment.</p>
+<p>Now let us build the Docker image</p>
+<h3 id="build-fastqc">Build Fastqc</h3>
+<pre><code class="language-bash">docker build -t fastqc .
+</code></pre>
+<p>This tags the image with the tag fastqc, however we actually have to tag it with a tagname that will work on the CAVATICA Registry. <br />
+Following the directions for pushing images to your own <a href="https://docs.sevenbridges.com/docs/upload-your-docker-image-with-a-dockerfile">CAVATICA Docker registry</a> with one change the destination is ❗ pgc-images.sbgenomics.com ❗ -- the notes erroneously state a different location, I have asked they update the documentation.</p>
+<p>Lets look at our images</p>
+<pre><code class="language-bash">docker images
+</code></pre>
+<p>It should look something like this:</p>
+<pre><code>(eos) ad376@cloudshell:~/fastqc-docker$ docker images
+REPOSITORY               TAG       IMAGE ID       CREATED         SIZE
+fastqc                   latest    7bcdb3be3afc   6 minutes ago   1.07GB
+continuumio/miniconda3   latest    ce7d119281a1   2 months ago    403MB
+</code></pre>
+<h3 id="tag-fastqc">TAG Fastqc</h3>
+<p>Take note of the <em><code>IMAGE ID</code></em>, that is what we will use to tag our image for pushing to CAVATICA.</p>
+<p>I did a local install of the fastqc to find out the version we have:</p>
+<pre><code class="language-bash">conda install -c fastqc -y
+</code></pre>
+<p>And typed</p>
+<pre><code class="language-bash">fastqc -v
+</code></pre>
+<p>Now I will use that version to change the <em><code>TAG</code></em> to more specifically reflect the image I have built.</p>
+<p>You can see the syntax by typing:</p>
+<pre><code class="language-bash">docker tag
+</code></pre>
+<p>Which tells us</p>
+<pre><code>(eos) ad376@cloudshell:~/fastqc-docker$ docker tag
+&quot;docker tag&quot; requires exactly 2 arguments.
+See 'docker tag --help'.
+
+Usage:  docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+</code></pre>
+<p>Note that we have the <em><code>Docker Image Repository</code></em> Specific to me is at the location of pgc-images.sbgenomics.com/adeslat.</p>
+<p>For your own repository -- replace <em><code>adeslat</code></em> with your own <em><code>[CAVATICA USERID]</code></em>.</p>
+<p>So now I tag:</p>
+<pre><code class="language-bash">docker tag 7bcdb3be3afc pgc-images.sbgenomics.com/[YOUR CAVATICA USERID]/fastqc:v0.11.9
+</code></pre>
+<p>Where the first item after the word tag is the IMAGE ID - aka the SOURCE_IMAGE
+The second is the TARGET_IMAGE</p>
+<h3 id="push-fastqc">PUSH Fastqc</h3>
+<p>Okay, almost there.  We have built and we have tagged, now we want to push our image to our Docker Image Repository.</p>
+<p>To do that we need to authenticate.  </p>
+<p>To authenticate we need a developers token.</p>
+<h2 id="login-to-cavatica-and-generate-authentication-token">Login to CAVATICA and Generate Authentication Token</h2>
+<p>Navigate to the Developers Tab
+<img src="/../../img/CAVATICADevelopersRegistryToken.png" ></p>
+<p>Select <em><code>Authentication Token</code></em> and Press <em><code>Generate Authentication Token</code></em></p>
+<p><img src="/../../img/CAVATICADevelopersGenerateAuthenticationToken.png" ></p>
+<p>Have a look at your repository, you will see that it is empty.
+<img src="/../../img/AVATICADevelopersRepository.png" ></p>
+<p>Now copy your authentication token.</p>
+<p>Now go back to the Google Shell and login to the repository.</p>
+<pre><code class="language-bash">docker login pgc-images.sbgenomics.com -u adeslat -p [paste your authentication token here]
+</code></pre>
+<p>Now we can push to our repository</p>
+<pre><code class="language-bash">docker push pgc-images.sbgenomics.com/adeslat/fastqc:v0.11.9
+</code></pre>
+<p>And if all is going well we see:</p>
+<pre><code>The push refers to repository [pgc-images.sbgenomics.com/adeslat/fastqc]
+3f13f484a6c6: Pushed
+cbc020caf48c: Pushed
+ab2731ec3f53: Pushed
+6fa1f4185aa2: Pushed
+ad6562704f37: Pushed
+v0.11.9: digest: sha256:400e075f2ba7c94f6982caa3a43bd90d1857ecde457bf4a26a4ab9b9423d7d85 size: 1373
+</code></pre>
+<p>Now we can inspect our repository on CAVATICA and we see:
+<img src="/../../img/CAVATICADevelopersRepositoryFastqc.png" ></p>
+<p>Now we actually can properly build and tag from the getgo our other image, for multiqc.</p>
+<h3 id="build-and-tag-multiqc">Build and Tag Multiqc</h3>
+<p>Navigate to the multiqc-docker directory</p>
+<pre><code class="language-bash">cd ../multiqc-docker
+</code></pre>
+<p>And lets build with the tag appropriate for pushing to CAVATICA straight away.</p>
+<pre><code class="language-bash">docker build -t pgc-images.sbgenomics.com/adeslat/multiqc:v1.0dev0 .
+</code></pre>
+<p>Because we are already authenticated, we can simply push.</p>
+<h3 id="push-multiqc">Push Multiqc</h3>
+<pre><code class="language-bash">docker push pgc-images.sbgenomics.com/adeslat/multiqc:v1.0dev0
+</code></pre>
+<p>And now when we inspect our repository, we have:
+<img src="/../../img/CAVATICADevelopersRepositoryMultiqc.png" ></p>
+<p>Now we can proceed with our workflow development!</p>
+<p><a href="../day-4-workflow-development/">Return to Agenda</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

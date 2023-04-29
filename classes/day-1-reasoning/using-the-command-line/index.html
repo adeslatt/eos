@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Anne Deslattes Mays, PhD" /><link rel="canonical" href="https://nih-nichd.github.io/eos/classes/day-1-reasoning/using-the-command-line/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Using the command line - Kids First & INCLUDE Elements of Style</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Using the command line";
+        var mkdocs_page_input_path = "classes/day-1-reasoning/using-the-command-line.md";
+        var mkdocs_page_url = "/eos/classes/day-1-reasoning/using-the-command-line/";
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Kids First & INCLUDE Elements of Style
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../../../">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Agenda</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pre-training/pre-training/">Pre-training</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../day-1-reasoning/">Day 1 - Reasoning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-2-code-versioning/day-2-code-versioning/">Day 2 - Code versioning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-3-containerization/day-3-containerization/">Day 3 - Containerization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-4-workflow-development/day-4-workflow-development/">Day 4 - Workflow development</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../day-5-workflow-execution/day-5-workflow-execution/">Day 5 - Workflow execution</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">About</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/background/">Background</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/attribution/">Attribution</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/license/">License</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../about/how-this-site-was-made/">Making this site</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Kids First & INCLUDE Elements of Style</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Using the command line</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance/blob/main/docs/classes/day-1-reasoning/using-the-command-line.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="using-the-command-line">Using the command line</h1>
+<p>Because I want to make this course accessible to researchers/clinicians who may or may not have had previous command line experience, I recently asked chatGPT the following question:</p>
+<p><em>how would you explain "what is a terminal window" and "what is a command line" to someone naive to these terms?</em></p>
+<p><strong>ChatGPT</strong> had the following response</p>
+<blockquote>
+<p>A terminal window is a type of computer program that allows you to interact with your computer using text commands instead of clicking on icons or menus with a mouse. It's a way to access the "guts" of your computer and execute specific instructions.</p>
+<p>A command line is the text interface in a terminal window where you can enter these instructions or commands. Essentially, it's a way to communicate with your computer using a language that it understands. Instead of pointing and clicking with a mouse, you type out specific commands to make things happen.</p>
+<p>For example, if you want to create a new folder, you could type "mkdir foldername" in the command line, and the computer would create a new folder with the name you specified. Or if you want to open a specific program, you could type its name followed by ".exe" and press enter, and the program would launch.</p>
+<p>The command line can be a powerful tool for accomplishing tasks quickly and efficiently, but it does require some knowledge of specific commands and syntax. However, there are many resources available online for learning how to use the command line, and many people find it to be a valuable skill to have.</p>
+<p>However, there are many resources available online for learning how to use the command line, and many people find it to be a valuable skill to have.</p>
+</blockquote>
+<p>We begin by using a tool <a href="https://explainshell.com/">ExlainShell</a></p>
+<h2 id="utilising-the-explainshell-interactive-command-explorer">Utilising the ExplainShell interactive command explorer</h2>
+<p>There is an excellent resource that provides an interactive command explainer that can be accessed at <a href="https://explainshell.com/">ExplainShell</a>
+Feel free to use and paste the following commands from the tutorial to see an explanation of the command based on the official commands documentation.</p>
+<h2 id="1-list-files-in-the-current-folder">1. List files in the current folder</h2>
+<p>Directory is used interchangeably with the term folder.</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<p>Inside <a href="https://explainshell.com/">ExplainShell</a> you will see the following explanation:</p>
+<p><img src="/../../img/ExplainShell_ls_l.png" width=500></p>
+<h2 id="2-inspect-your-current-folder-location-in-the-file-system">2. Inspect your current folder location in the file system</h2>
+<p>To see in which folder you are currently in, use the <strong><code>pwd</code></strong> command, short for <strong><code>print working directory</code></strong>. This will return the absolut path to the location you currently stand.</p>
+<blockquote>
+<p>NOTE: 
+What is an <em>absolute</em> path? what is a <em>relative</em> path? </p>
+</blockquote>
+<p><a href="https://linuxfoundation.org/blog/classic-sysadmin-absolute-path-vs-relative-path-in-linux-unix/">See this resource for a thorough explanation</a></p>
+<p>Again feel free now to copy and paste this command in the <a href="https://explainshell.com">ExplainShell</a></p>
+<pre><code class="language-bash">pwd
+</code></pre>
+<p><img src="/../../img/ExplainShellpwd.png" width=500></p>
+<h2 id="3-copy-a-file">3. Copy a file</h2>
+<p>Now let's go to a terminal window inside of the JupyterLab notebook you have just started up.</p>
+<p>Select terminal</p>
+<p><img src="/../../img/JupyterLabNotebookSelectTerminalWindow.png" width=500></p>
+<p>Then you will see the command-line:</p>
+<p><img src="/../../img/JupyterLabNotebookCommandLine.png" width=500></p>
+<p>Before we copy a file, let's use a command-line command <em><code>echo</code></em> and create a file with the content "I am the header of your first README.md".</p>
+<p>If you want to know about this command, look it up on <a href="https://explainshell.com">ExplainShell</a>.</p>
+<p>We are also using a command called a <em><code>redirect</code></em> -- this will use it to put content into a new file.</p>
+<pre><code class="language-bash">echo 'I am the header of your first README.md' &gt; README.md
+</code></pre>
+<p>You can run <code>ls -l</code> to see that the file is there.  As well as see the commands <em><code>more</code></em> and another command called <em><code>less</code></em>.</p>
+<p>Use <a href="https://explainshell.com">ExplainShell</a> to know about these commands, but they show the contents of the file as you might expect.</p>
+<p><img src="/../../img/JupyterLabNotebookTerminalWindowEchoToCreateAREADME.md.png" width = 500></p>
+<p>Now let's create a copy:</p>
+<pre><code class="language-bash">cp README.md duplicated_README.md
+</code></pre>
+<p>Now let's inspect if the file was created, by listing files in the directory with the <code>ls -l</code> command. We are expecting to view the file with name <code>duplicated_README.md</code> in the listed files and folders</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<h1 id="4-deleting-a-file">4. Deleting a file</h1>
+<p>To delete (remove) a file we can use the command <code>rm name_of_folder</code>. Let's delete the duplicate README.md file named <code>duplicated_README.md</code></p>
+<pre><code class="language-bash">rm duplicated_README.md
+</code></pre>
+<p>Now let's inspect if the file was created, by listing files in the directory with the <code>ls -l</code> command. We are expecting to <strong>not</strong> view the file with name <code>duplicated_README.md</code> as we just <strong>deleted</strong> it in the listed files and folders</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<h2 id="5-create-a-new-directory-folder">5. Create a new directory (folder)</h2>
+<p>To create a new folder if that folder doesn't exist, we can use the command <code>mkdir name_of_folder</code>. Let's create a folder named <code>new_folder</code></p>
+<pre><code class="language-bash">mkdir new_folder
+</code></pre>
+<p>Now let's inspect if the folder was created, by listing files in the directory with the <code>ls -l</code> command. We are expecting to view the folder with name <code>new_folder</code> in the listed files and folders</p>
+<p>Let's inspect the folder exists with our trusted <code>ls -l</code> command</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<p><img src="/../../img/JupyterLabNotebookNewFolderAndContent.png" width=500></p>
+<h2 id="6-delete-a-folder">6. Delete a folder</h2>
+<p>We can delete a folder using the <code>rm -r</code> command:</p>
+<pre><code class="language-bash">rm -r new_folder
+</code></pre>
+<p>Let's inspect that the folder is indeed deleted:</p>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<h2 id="7-downloading-a-file-using-a-link">7. Downloading a file using a link</h2>
+<p>We can retrieve a file using a public link. For example, we have uploaded in a public ZENODO record for this course an example file. The link for the file is: https://zenodo.org/record/4302133/files/deseq2_5k.csv</p>
+<p>Details of this file, which is a selected subset of the results of running DESeq on RNA-seq files, only those that were with an appropriate p-value (&lt; 0.05) and above the 1.5 fold difference were put into the matrix.   </p>
+<p>https://zenodo.org/record/4302133.   You can see the version history, this file was created by a colleague at Lifebit, for the first time this course was offered in 2019 at the Jackson Laboratory.</p>
+<p>To retrieve this file, we are going to open the terminal window and run the command:</p>
+<pre><code class="language-bash">cd /sbgenomics/workspace/Kids-First-Elements-of-Style-Workflow-Creation-Maintenance/classes/Running-a-JupyterLab-Notebook
+wget https://zenodo.org/record/4302133/files/deseq2_5k.csv
+</code></pre>
+<p>So please copy this command and paste it in the terminal window and press return - in preparation for the next section of todays class.  Reading data and plotting a volcano plot.</p>
+<h2 id="return-to-day-1">Return to Day 1</h2>
+<p><a href="../day-1-reasoning/">Return to today's agenda</a></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/adeslatt/Kids-First-INCLUDE-Elements-of-Style-Workflow-Creation-Maintenance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
